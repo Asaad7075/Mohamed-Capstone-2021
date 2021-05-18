@@ -1,0 +1,114 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <LangVersion>9</LangVersion>
+  </PropertyGroup>
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E47892CF-BE39-4107-8037-A3866B930A68}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>DataAccessLayer</RootNamespace>
+    <AssemblyName>DataAccessLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BingMapsRESTToolkit, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BingMapsRESTToolkit.1.1.4\lib\net45\BingMapsRESTToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Buffers, Version=4.0.3.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Buffers.4.5.1\lib\net461\System.Buffers.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Memory, Version=4.0.1.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Memory.4.5.4\lib\net461\System.Memory.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Numerics" />
+    <Reference Include="System.Numerics.Vectors, Version=4.1.4.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Numerics.Vectors.4.5.0\lib\net46\System.Numerics.Vectors.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.CompilerServices.Unsafe, Version=5.0.0.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Runtime.CompilerServices.Unsafe.5.0.0\lib\net45\System.Runtime.CompilerServices.Unsafe.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Text.Json, Version=4.0.1.0, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+    <Reference Include="WindowsBase" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="AutoDefectRecallAccessor.cs" />
+    <Compile Include="ChildcareAccessor.cs" />
+    <Compile Include="ClientAccessor.cs" />
+    <Compile Include="DBConnection.cs" />
+    <Compile Include="DeliveryTicketAccessor.cs" />
+    <Compile Include="DonationAccessor.cs" />
+    <Compile Include="DonationFormAccessor.cs" />
+    <Compile Include="DonorAccessor.cs" />
+    <Compile Include="DriversLicenseAccessor.cs" />
+    <Compile Include="EmployeeAccessor.cs" />
+    <Compile Include="FinancialCounselingAccessor.cs" />
+    <Compile Include="GeoLocationAccessor.cs" />
+    <Compile Include="InventoryAccessor.cs" />
+    <Compile Include="OrderAccessor.cs" />
+    <Compile Include="PickUpTicketAccessor.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RideTicketAccessor.cs" />
+    <Compile Include="RideReviewAccessor.cs" />
+    <Compile Include="RouteAccessor.cs" />
+    <Compile Include="ServiceAccessor.cs" />
+    <Compile Include="ServiceCategoriesAccessor.cs" />
+    <Compile Include="ServiceProviderAccessor.cs" />
+    <Compile Include="ServiceReviewAccessor.cs" />
+    <Compile Include="SupplyInventoryAccessor.cs" />
+    <Compile Include="TicketStatusAccessor.cs" />
+    <Compile Include="VehicleAccessor.cs" />
+    <Compile Include="VehicleImageAccessor.cs" />
+    <Compile Include="VehicleMaintenanceReportAccessor.cs" />
+    <Compile Include="VehicleMaintenanceStatusAccessor.cs" />
+    <Compile Include="ZipCodeAccessor.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessInterfaces\DataAccessInterfaces.csproj">
+      <Project>{270dcdb2-fc48-4ae6-9ec4-a1f2ec8f8141}</Project>
+      <Name>DataAccessInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainModels\DomainModels.csproj">
+      <Project>{12b501f8-4f38-4755-8eba-d810bd243705}</Project>
+      <Name>DomainModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,42 @@
+﻿<Page x:Class="WpfPresentation.ZipCodeViews.ZipCodePage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation.ZipCodeViews"
+      mc:Ignorable="d"
+      Title="ZipCodePage" Loaded="zipCodeListView_Loaded" Height="613.2" Width="921.6">
+    <!-- Chase Martin
+        Created: 2020/02/19
+       Zip Code Page-->
+    <Grid Margin="0,0,-0.4,-73.2">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="2*"/>
+            <ColumnDefinition Width="459*"/>
+        </Grid.ColumnDefinitions>
+        <Grid Margin="-8px" Background="GhostWhite" Visibility="Visible" IsEnabled="True" Grid.ColumnSpan="2">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="790.4"></ColumnDefinition>
+                <ColumnDefinition Width="37*"/>
+                <ColumnDefinition Width="12*"/>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="0.8"></RowDefinition>
+                <RowDefinition Height="155.2"></RowDefinition>
+                <RowDefinition Height="2.8"></RowDefinition>
+                <RowDefinition Height="428.4"/>
+                <RowDefinition Height="90" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="borderHeaderAddDriversLicense" Background="LightGray" Margin="0,0,-0.4,108.6" Grid.RowSpan="2" Grid.ColumnSpan="3"/>
+            <TextBlock x:Name="txtBlkHeaderAddDriversLicense" Grid.Row="1" Margin="0,8.4,-0.4,108.6" FontWeight="Bold" FontSize="16" Grid.ColumnSpan="3">
+                            Logistics: Zip Codes
+            </TextBlock>
+            <DataGrid x:Name="dgZipCodeList" SelectionMode="Single" Grid.Row="3" Margin="78,90.4,44.6,65.2" IsReadOnly="True" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnUpdate" Grid.Row="3"
+                            Margin="757,397.4,44.4,89.6" Click="btnUpdate_Click" Grid.RowSpan="2" Grid.ColumnSpan="2">Update Selected</Button>
+            <Button x:Name="btnAdd" Grid.Row="3"
+                            Margin="583,396.4,104.4,89.6" Click="btnAdd_Click" Grid.RowSpan="2">Add New</Button>
+        </Grid>
+    </Grid>
+</Page>

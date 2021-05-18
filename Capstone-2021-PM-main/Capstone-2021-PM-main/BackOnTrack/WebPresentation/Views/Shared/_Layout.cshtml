@@ -1,0 +1,88 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Back-On-Track</title>
+    @Styles.Render("~/Content/css")
+    @Scripts.Render("~/bundles/modernizr")
+    <!--
+        Chantal Shirley
+        Created: 2021/04/09
+        Custom CSS Styling
+    -->
+    @if(IsSectionDefined("CustomStyling")) 
+    {
+        @RenderSection("CustomStyling", required:false)
+    }
+
+</head>
+<body>
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <a href="@Url.Action("index","home")"><img src="~/Images/BackOnTrack.png" width="30" style="float: left; margin-right:5px; margin-top:10px; margin-left:5px;" /></a>
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("Back-on-Track", "Index", "Home", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <!-- Richard Schroeder
+        Created: 2021/04/02
+        Shows "View Donations" and "View Services" links on login to MVC
+        ---------------------------------------------------------------------------
+        Chantal Shirley
+        Updated: 2021/04/20
+        Segments user views based on what roles they belong to
+        -->
+                    @if (User.Identity.IsAuthenticated)
+                    {
+                        if (User.IsInRole("Client") || User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Delivery Tickets", "Index", "DeliveryTicket")</li>
+                            <li>@Html.ActionLink("View Services", "Available", "Services")</li>
+                            <li>@Html.ActionLink("View Donations", "ViewDonations", "Donations")</li>
+                            <li>@Html.ActionLink("View Orders", "ViewMyOrders", "Orders")</li>
+                        }
+                        if (User.IsInRole("Donor") || User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("Donor", "Index", "Donors")</li>
+                        }
+                        if (User.IsInRole("Admin"))
+                        {
+                            <li>@Html.ActionLink("View Donors", "ViewAllDonors", "Donors")</li>
+                        }
+                    }
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Contact", "Contact", "Home")</li>
+                </ul>
+                @Html.Partial("_LoginPartial")
+            </div>
+        </div>
+    </div>
+    <div class="container body-content">
+        @RenderBody()
+        <hr />
+        <footer style="text-align:center;">
+            <p>
+                @*Nate Hepker Created: 2021/04/04, added link in footer to display the reviews landing page*@
+                &copy; @DateTime.Now.Year - BackOnTrack&nbsp; &nbsp; &nbsp;
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <span>| &nbsp; &nbsp; &nbsp;</span>
+                    @Html.ActionLink("Tell us about your experience", "Reviews", "Reviews")
+                }
+                @*&nbsp; &nbsp; &nbsp;| &nbsp; &nbsp; &nbsp;*@
+            </p>
+        </footer>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")
+    @Scripts.Render("~/bundles/bootstrap")
+    @RenderSection("scripts", required: false)
+</body>
+</html>

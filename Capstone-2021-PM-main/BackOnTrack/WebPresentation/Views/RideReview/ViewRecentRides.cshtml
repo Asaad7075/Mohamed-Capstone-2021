@@ -1,0 +1,85 @@
+﻿@model IEnumerable<DomainModels.RideReviewVM>
+
+@using DomainModels
+
+@{
+    ViewBag.Title = "ViewRecentRides";
+}
+@*Nate Hepker
+    Created: 2021/04/06
+    Displays ride tickets that were made of provided rides
+    for a user to select and interact with for giving feedback
+*@
+<h2>View recent rides</h2>
+
+<table class="table">
+
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientDriverRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverClientRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.DriverComment)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientDriverRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientComment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverClientRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DriverComment)
+            </td>
+            <td>
+                @Html.ActionLink("Review this ride", "CreateReview", item)
+            </td>
+        </tr>
+    }@*End for each loop*@
+    <tr>
+        <td>
+            <button type="button" class="btn btn-outline-primary btn-lg">
+                @Html.ActionLink("See all reviews", "ViewAllRideReviews", "RideReview")
+            </button>
+        </td>
+    </tr>
+    @* //5:00pm 4/10/2021
+                    PageLinks keep having errors, trying dynamic object to "blend" RideReviewVM with
+                    RideReviewListViewModel to use the properties from both to get the page links for pagination.
+        <div class="btn-group pull-right">
+            @Html.PageLinks(Model.PagingInfo, x => Url.Action("ViewRecentRides", new { page = x }))
+        </div>
+    *@
+</table>

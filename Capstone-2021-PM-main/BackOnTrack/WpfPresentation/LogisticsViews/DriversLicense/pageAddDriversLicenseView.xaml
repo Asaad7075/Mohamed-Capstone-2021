@@ -1,0 +1,84 @@
+﻿<Page x:Class="WpfPresentation.pageAddDriversLicenseView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="AddDriversLicenseView">
+    <!-- Chantal Shirley
+        Created: 2020/02/02
+        Add Drivers license page-->
+        <Grid x:Name="grdAddDriversLicenseInformation" Background="GhostWhite" Visibility="Visible" IsEnabled="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="375"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="75"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="125" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="borderHeaderAddDriversLicense" Background="LightGray" Grid.Row="0" Grid.ColumnSpan="2"></Border>
+            <TextBlock x:Name="txtBlkHeaderAddDriversLicense" Grid.Row="0" Grid.ColumnSpan="2" Margin="3px" FontWeight="Bold" FontSize="16">
+                            Logistics: Manager
+            </TextBlock>
+
+            <ScrollViewer Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="2" >
+                <Border Background="WhiteSmoke" Margin="15" >
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" />
+                    </Border.Effect>
+                </Border>
+            </ScrollViewer>
+
+            <TextBlock x:Name="txtBlk" Grid.Row="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" FontFamily="Helvetica" Margin="0 25 0 0" >
+                            Add Drivers License Information
+            </TextBlock>
+
+            <TextBlock x:Name="txtBlkBodyAddDriversLicense" Grid.Row="2" Grid.ColumnSpan="2" Margin="0 0 300 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Helvetica"
+                                   FontSize="25" FontWeight="Bold">
+                            Fill in all areas of the form:
+            </TextBlock>
+
+            <Label x:Name="lblDriversLicNo" Content="Driver's License Number" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica"></Label>
+            <TextBox x:Name="txtDriversLicNo" Grid.Row="3" Grid.Column="1" Margin="10 10 50 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16"></TextBox>
+
+            <Label x:Name="lblEmployeeID" Content="Employee ID" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica"></Label>
+            <TextBox x:Name="txtEmployeeID" Grid.Row="4" Grid.Column="1" Margin="10 10 50 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16"></TextBox>
+
+            <Label x:Name="lblLicenseType" Content="License Type" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica"></Label>
+            <TextBox x:Name="txtLicenseType" Grid.Row="5" Grid.Column="1" Margin="10 10 50 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16"></TextBox>
+
+            <Label x:Name="lblLicenseIssued" Content="License Issued" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica"></Label>
+            <DatePicker x:Name="datePickerLicenseIssued" Grid.Row="6" Grid.Column="1" Margin="10 10 300 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16"></DatePicker>
+
+            <Label x:Name="lblLicenseExpiry" Content="License Expiry Date" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica"></Label>
+            <DatePicker x:Name="datePickerLicenseExpiry" Grid.Row="7" Grid.Column="1" Margin="10 10 300 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16"></DatePicker>
+
+            <Button x:Name="btnAddDriversLicenseInformation" Content="Save" Grid.Column="1" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                Width="200" Margin="15" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnAddDriversLicenseInformation_Click"/>
+
+            <Button x:Name="btnCancelAddDriversLicenseInformation" Content="Cancel" Grid.Column="1" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                Width="200" Margin="230 15 0 0" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnCancelAddDriversLicenseInformation_Click"/>
+        </Grid>
+        <!-- End Of Add Drivers License Page-->
+</Page>

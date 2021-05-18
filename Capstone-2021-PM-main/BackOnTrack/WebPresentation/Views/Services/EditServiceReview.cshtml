@@ -1,0 +1,76 @@
+﻿@model DomainModels.Services.ServiceReview
+
+@{
+    ViewBag.Title = "EditServiceReview";
+}
+@*Chase Martin
+    Created: 2021/04/23
+    Shows an edit form for a user, pre-populated with the old data
+    for a user to modify the comment or review rating.
+*@
+<h2>Edit Review</h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            <h4>Service Name</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ServiceName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ServiceName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>First Name</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProviderFirstName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProviderFirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>Last Name</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ProviderLastName, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ProviderLastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>Rating</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Rating, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Rating, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <h4>Client Comment</h4>
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ClientComment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ClientComment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @Html.HiddenFor(model => model.ServiceReviewID)
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to Reviews", "ServiceReviewList")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

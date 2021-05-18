@@ -1,0 +1,115 @@
+﻿<Page x:Class="WpfPresentation.pageVehicleMaintenanceReportView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      mc:Ignorable="d"
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="AddVehicleMaintenanceReportView">
+    <Grid>
+        <!-- Zach Stultz
+        Created: 2020/02/18
+        Add Maintenance Report page-->
+        <Grid x:Name="grdAddVehicleMaintenanceReportInformation" Margin="5px" Background="GhostWhite" Visibility="Visible" IsEnabled="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="375"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="39"></RowDefinition>
+                <RowDefinition Height="69"></RowDefinition>
+                <RowDefinition Height="65"></RowDefinition>
+                <RowDefinition Height="59"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="59"></RowDefinition>
+                <RowDefinition Height="59"></RowDefinition>
+                <RowDefinition Height="59"></RowDefinition>
+                <RowDefinition Height="69"></RowDefinition>
+                <RowDefinition Height="95"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="borderHeaderAddDriversLicense" Background="LightGray" Grid.Row="0" Grid.ColumnSpan="2"></Border>
+            <TextBlock x:Name="txtBlkHeaderAddDriversLicense" Grid.Row="0" Grid.ColumnSpan="2" Margin="3px" FontWeight="Bold" FontSize="16">
+                            Logistics
+            </TextBlock>
+
+            <ScrollViewer Grid.Row="1" Grid.RowSpan="12" Grid.ColumnSpan="2">
+                <Border Background="WhiteSmoke" Margin="15">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" />
+                    </Border.Effect>
+                </Border>
+            </ScrollViewer>
+
+            <TextBlock x:Name="txtBlk" Grid.Row="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" FontFamily="Helvetica" Margin="0 25 0 0" > Maintenance Report
+            </TextBlock>
+
+            <TextBlock x:Name="txtBlkBodyAddDriversLicense" Grid.Row="2" Grid.ColumnSpan="2" Margin="0 0 300 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Helvetica"
+                                   FontSize="25" FontWeight="Bold">Create or Update Maintenance Report</TextBlock>
+
+            <!-- 
+                Chantal Shirley
+                Updated: 2021/04/02
+                Implementing editing of maintenance report.
+            -->
+            <Label x:Name="lblAutoPopulate" Content="(Optional) Choose Report" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica"/>
+            <ComboBox x:Name="cbMaintenanceReports" Grid.Row="3" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Width="350"
+                      Margin="10" Text="Choose a Maintenance Report..." IsEditable="True" IsReadOnly="True" SelectionChanged="cbMaintenanceReports_SelectionChanged"   />
+            <!-- End of Updated Work -->
+
+            <Label x:Name="lblVehicleVin" Content="Vehicle VIN Number" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica"></Label>
+            <TextBox x:Name="txtVehicleVin" Grid.Row="4" Grid.Column="1" Margin="10 10 50 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16"/>
+
+            <Label x:Name="lblVehicleMake" Content="Vehicle Make" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica" IsEnabled="False" Visibility="Hidden"/>
+            <TextBox x:Name="txtVehicleMake" Grid.Row="5" Grid.Column="1" Margin="10 10 50 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16" Visibility="Hidden"/>
+
+            <Label x:Name="lblVehicleModel" Content="Vehicle Model" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica" IsEnabled="False" Visibility="Hidden"/>
+            <TextBox x:Name="txtVehicleModel" Grid.Row="6" Grid.Column="1" Margin="10 10 50 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16" Visibility="Hidden"/>
+
+            <Label x:Name="lblLicensePlate" Content="License Plate" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica" Visibility="Hidden"/>
+            <TextBox x:Name="txtLicensePlate" Grid.Row="5" Grid.Column="1" Margin="10 10 50 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16" Visibility="Hidden"/>
+
+            <Label x:Name="lblMaintenanceType" Content="Maintenance Type" Grid.Row="5" Grid.Column="0" HorizontalAlignment="Right" VerticalAlignment="Center" FontFamily="Helvetica" FontSize="16"></Label>
+            <ComboBox x:Name="cbMaintenenceType" Grid.Row="5" Margin="10 10 50 10" Grid.Column="2" HorizontalAlignment="Left" VerticalAlignment="Center"></ComboBox>
+
+            <Label x:Name="lblMaintenanceServiceDate" Content="Maintenance Service Date" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica"></Label>
+            <DatePicker x:Name="datePickerMaintenanceServiceDate" Grid.Row="6" Grid.Column="1" Margin="10 10 300 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16"></DatePicker>
+            <Label x:Name="lblMaintenanceFinished" Content="Maintenance Finished" Grid.Row="7" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" FontFamily="Helvetica"></Label>
+            <ComboBox x:Name="cbMaintenanceFinished" Grid.Row="7" Grid.Column="1" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="10 10 300 10"></ComboBox>
+            <Label x:Name="lblMaintenanceNotes" Content="Maintenance Notes" Grid.Row="8" HorizontalAlignment="Right" VerticalAlignment="Center" FontSize="16" FontFamily="Helvetica"></Label>
+            <TextBox x:Name="tbMaintenanceNotes" Grid.Row="8" Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Left" Width="540" Height="40" Margin="5" TextWrapping="Wrap"></TextBox>
+
+            <!-- 
+                Chantal Shirley
+                Updated: 2021/04/02
+                Implementing editing of maintenance report.
+            -->
+            <Button x:Name="btnUpdateMaintenanceReport" Content="Update" Grid.Column="0" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Right" IsEnabled="False"
+                                Width="200" Margin="15" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnUpdateMaintenanceReport_Click" />
+            
+            <!-- End of Updated Work -->
+            <Button x:Name="btnAddMaintenanceReport" Content="Add" Grid.Column="1" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Left"
+                                Width="200" Margin="15" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnAddMaintenanceReport_Click"/>
+
+            <!-- 
+                Chantal Shirley
+                Updated: 2021/04/02
+                Implemented functionality
+            -->
+            <Button x:Name="btnCancelAddMaintenanceReport" Content="Cancel" Grid.Column="1" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                Width="200" Margin="230 15 0 0" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnCancelAddMaintenanceReport_Click"/>
+            <!-- End of Update -->
+        </Grid>
+    </Grid>
+</Page>

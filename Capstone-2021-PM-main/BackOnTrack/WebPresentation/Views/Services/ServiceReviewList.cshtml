@@ -1,0 +1,64 @@
+﻿@model IEnumerable<DomainModels.Services.ServiceReview>
+
+@{
+    ViewBag.Title = "ServiceReviewList";
+}
+
+@*Chase Martin
+    Created: 2021/04/13
+    Displays past reviews that were posted about a service as a list.
+*@
+
+<h2>Service Reviews</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProviderFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ProviderLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientComment)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProviderFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ProviderLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientComment)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditServiceReview", new { id = item.ServiceReviewID })
+            </td>
+        </tr>
+    }
+    <tr>
+        <td>
+            <button type="button" class="btn btn-outline-primary btn-md">
+                @Html.ActionLink("View services to review", "Available")
+            </button>
+        </td>
+    </tr>
+</table>

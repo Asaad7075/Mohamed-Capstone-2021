@@ -1,0 +1,208 @@
+﻿<Window x:Class="WpfPresentation.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPresentation"
+        mc:Ignorable="d"
+        Title="Back-On-Track" Height="800" Width="1200" WindowStartupLocation="CenterScreen" Icon="pack://application:,,,/DataAccessFakes;component/BackOnTrack.png" Loaded="Window_Loaded" >
+    <!-- 
+    Chantal Shirley
+    Created: 2021/02/02
+    
+    Initial design of the Main Window.
+    -->
+    <Grid x:Name="grdMainWindow" Background="GhostWhite">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="25"></RowDefinition>
+            <RowDefinition Height="55"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="200"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Menu x:Name="mnuMain" Grid.ColumnSpan="2">
+            <MenuItem x:Name="mnuItemFile" Header="File" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <MenuItem x:Name="mnuItemMenu" Header="Menu" VerticalAlignment="Center" HorizontalAlignment="Center" />
+            <MenuItem x:Name="mnuUpdatePassword" Header="Update Password..." VerticalAlignment="Center" HorizontalAlignment="Center" Click="mnuUpdatePassword_Click" />
+        </Menu>
+
+        <!-- Top Navbar Area below Menu Header-->
+        <Grid x:Name="grdLoginArea" Grid.Row="1" Grid.ColumnSpan="2">
+            <Grid.RowDefinitions>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="25"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="75"></ColumnDefinition>
+                <ColumnDefinition />
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="220"></ColumnDefinition>
+                <ColumnDefinition Width="220"></ColumnDefinition>
+                <ColumnDefinition Width="120"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+
+            <Border Grid.RowSpan="2" Grid.ColumnSpan="6" Background="GhostWhite"></Border>
+
+            <!-- Image courtesy of FreeLogoDesign.org-->
+            <Image x:Name="imgBackOnTrackLogo" Source="pack://application:,,,/DataAccessFakes;component/BackOnTrack.png" Grid.RowSpan="2" Grid.Column="0" Grid.ColumnSpan="1" Margin="1 0 0 0" />
+
+            <!-- Login Credentials Area -->
+            <TextBox x:Name="txtEmail" Grid.Row="0" Grid.Column="3" Margin="3px"  />
+            <Label x:Name="lblEmail" Grid.Row="1" Grid.Column="3" Content="Email" FontWeight="Bold" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="90,0" />
+
+            <PasswordBox x:Name="pwdPassword" Grid.Row="0" Grid.Column="4" Margin="3px" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" />
+            <Label x:Name="lblPassword" Grid.Row="1" Grid.Column="4" Content="Password" FontWeight="Bold" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" />
+
+            <Button x:Name="btnLogin" Grid.Row="0" Grid.Column="5" Margin="3" Content="Login" VerticalContentAlignment="Center" HorizontalContentAlignment="Center" Click="btnLogin_Click" IsDefault="True" />
+        </Grid>
+
+        <!-- Background area of the tabs -->
+        <Border x:Name="BorderBackground" Grid.Row="2" Grid.Column="1" Background="GhostWhite"></Border>
+
+        <!-- Marks start of application tabs area-->
+        <TabControl x:Name="tabMain" Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2">
+
+            <!-- Not in Designs but may be nice to welcome users -->
+            <TabItem x:Name="tabWelcome" Header="Welcome" >
+                <Grid>
+                    <StackPanel VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Image x:Name="imgLogin" HorizontalAlignment="Center" Width="200px" Source="pack://application:,,,/DataAccessFakes;component/BackOnTrack.png"  />
+                        <TextBlock x:Name="txtBlkWelcomeName" HorizontalAlignment="Center" FontSize="45" FontWeight="Bold" FontFamily="Helvetica"/>
+                    </StackPanel>
+                    
+                </Grid>
+            </TabItem>
+
+            <!-- Logistics Application tab-->
+            <TabItem x:Name="tabItemLogistics" Header="Logistics">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <!--Side Bar Nav Controlls-->
+                    <ListBox x:Name="lstLogisticsSideBarNav"
+                            Grid.Column="0" Padding="0" SelectionChanged="lstLogisticsSideBarNav_SelectionChanged"
+                             ItemsSource="{Binding LogisticPages}">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PageName}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Frame x:Name="frameLogistics" NavigationUIVisibility="Hidden" Grid.Column="1">
+                        <!-- A general frame to inject desired views into overall application; decouples views from main window -->
+
+                    </Frame>
+                </Grid>
+
+            </TabItem>
+
+            <!-- Service Provisions Desktop Area -->
+            <TabItem x:Name="tabItemServiceProvision" Header="Service Provision">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <!--Side Bar Nav Controlls-->
+                    <ListBox x:Name="lstServiceProvisionSideBarNav"
+                            Grid.Column="0" Padding="0" 
+                             ItemsSource="{Binding ServiceProvisionPages}" SelectionChanged="lstServiceProvisionSideBarNav_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PageName}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Frame x:Name="frameServiceProvision" NavigationUIVisibility="Hidden" Grid.Column="1">
+                        <!-- A general frame to inject desired views into overall application; decouples views from main window -->
+
+                    </Frame>
+                </Grid>
+            </TabItem>
+
+            <!-- Inventory Management Desktop Area -->
+            <TabItem x:Name="tabItemInventoryManagement" Header="Inventory Management">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+
+                    </Grid.ColumnDefinitions>
+                    <!--Side Bar Nav Controlls-->
+                    <ListBox x:Name="lstInventoryManagementSideBarNav"
+                            Grid.Column="0" Padding="0" 
+                             ItemsSource="{Binding InventoryManagementPages}" SelectionChanged="lstInventoryManagementSideBarNav_SelectionChanged" >
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PageName}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Frame x:Name="frameInventoryManagement" NavigationUIVisibility="Hidden" Grid.Column="1">
+                        <!-- A general frame to inject desired views into overall application; decouples views from main window -->
+
+                    </Frame>
+                </Grid>
+            </TabItem>
+
+            <!-- Employee Management Desktop Area -->
+            <TabItem x:Name="tabItemEmployeeManagement" Header="Employee Management">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <!-- Side Bar Nav Controlls -->
+                    <ListBox x:Name="lstEmployeeManagementSideBarNav"
+                             Grid.Column="0" Padding="0"
+                             ItemsSource="{Binding EmployeeManagementPages}" SelectionChanged="lstEmployeeManagementSideBarNav_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PageName}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Frame x:Name="frameEmployeeManagement" NavigationUIVisibility="Hidden" Grid.Column="1">
+                        <!-- A general frame to inject desired views into overall application; decouples views from main window -->
+
+                    </Frame>
+                </Grid>
+            </TabItem>
+
+            <!-- Material Handling Desktop Area -->
+            <TabItem x:Name="tabItemMaterialHandling" Header="Material Handling">
+                <Grid>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="200"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+
+                    <!-- Side Bar Nav Controlls -->
+                    <ListBox x:Name="lstMaterialHandlingSideBarNav"
+                             Grid.Column="0" Padding="0"
+                             ItemsSource="{Binding MaterialHandlingPages}" SelectionChanged="lstMaterialHandlingSideBarNav_SelectionChanged">
+                        <ListBox.ItemTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding PageName}"></TextBlock>
+                            </DataTemplate>
+                        </ListBox.ItemTemplate>
+                    </ListBox>
+                    <Frame x:Name="frameMaterialHandling" NavigationUIVisibility="Hidden" Grid.Column="1">
+                        <!-- A general frame to inject desired views into overall application; decouples views from main window -->
+
+                    </Frame>
+
+
+                </Grid>
+
+            </TabItem>
+        </TabControl>
+
+    </Grid>
+</Window>

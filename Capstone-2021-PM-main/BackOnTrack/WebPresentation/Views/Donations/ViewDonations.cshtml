@@ -1,0 +1,53 @@
+﻿@model IEnumerable<DomainModels.Donation>
+
+@{
+    ViewBag.Title = "ViewDonations";
+}
+
+<h2>ViewDonations</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.NameOfItem)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstValue)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AgeofItem)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.NameOfItem)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Description)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.EstValue)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.AgeofItem)
+    </td>
+
+    <td>
+        @Html.ActionLink("View Details", "DonationItemDetails", new { id = item.DonationID })
+    </td>
+    <td>
+    </td>
+</tr>
+    }
+
+</table>

@@ -1,0 +1,46 @@
+﻿@model IEnumerable<DomainModels.Services.ServiceVM>
+
+@{ ViewBag.Title = "My Service Appointments"; }
+
+<h2>My Saved Schedules</h2>
+
+
+<table class="table">
+    <tr>
+        <th>
+            Business
+        </th>
+        <th>
+            Service
+        </th>
+        <th>
+            Start Date/Time
+        </th>
+        <th>
+            End Date/Time
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.Business)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.Service)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ServiceScheduleStart)
+    </td>
+    <td>
+        @Html.DisplayFor(modelItem => item.ServiceScheduleEnd)
+    </td>
+</tr>
+}
+<p>
+    @Html.ActionLink("Return To Services", "Available")
+</p>
+
+</table>

@@ -1,0 +1,42 @@
+﻿@* 
+    Chantal Shirley
+    Created: 2021/04/29
+    Inital Designs for About Us Page.
+*@
+
+@{
+    ViewBag.Title = "About Us";
+}
+
+@section CustomStyling {
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Caveat&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Lobster&display=swap" rel="stylesheet">
+}
+<div style="box-shadow: 0 4px 8px #d9d9d9; border-radius:5px; background-image: url(https://cdn.pixabay.com/photo/2016/10/22/17/46/mountains-1761292_960_720.jpg); height:300px;
+background-size:cover; background-repeat:no-repeat;">
+    <br />
+    <p style="color:ghostwhite; text-align:center; height:300px; font-weight:700; font-size:70px; ; font-family: 'Caveat', cursive;">
+        Back-On-Track <br />
+        <span style="font-size: 25px; text-wrap:normal;">OUR life's work is helping YOU reach your fullest potential!</span>
+    </p>
+</div>
+<div style="background-color:whitesmoke;box-shadow: 0 4px 8px #d9d9d9; border-radius:5px; padding-top:15px;">
+    <p style="font-size:15px; margin:0 auto;max-width:400px; font-weight:bold;">
+        <span style="font-family: Arial, Helvetica, sans-serif;font-size:12px;color:firebrick; font-weight:bold;">What We Bring.</span><br />
+    </p>
+    <span style="font-family:'Caveat', cursive;; font-size:85px; font-weight:900; display:flex; justify-content:center;">
+        Tenacity.<br />
+        Empathy. <br />
+        Courage. <br />
+        New Hope.
+    </span>
+    <img src="https://static.thenounproject.com/png/645172-200.png" width="200px" style="margin:0 auto; display:block;" />
+    <p style="font-size:30px;  margin:0 auto;max-width:400px; font-weight:bold; font-family: 'Caveat', cursive;">
+        <span style="font-family: Arial, Helvetica, sans-serif;font-size:12px;color:firebrick; font-weight:bold;">Our DNA.</span><br />The fabric of our work and culture is helping you. Whether that's a donation to the right location,
+        a ride to your dentist's appointment, or emotional support, we are here to serve you.
+    </p>
+    <img src="https://static.thenounproject.com/png/645172-200.png" width="200px" style="margin:0 auto; display:block;" />
+    <p style="text-align:center; padding-bottom:25px;"><a class="btn btn-primary" href="@Url.Action("contact","home")">Contact Us Today! &raquo;</a></p>
+</div>

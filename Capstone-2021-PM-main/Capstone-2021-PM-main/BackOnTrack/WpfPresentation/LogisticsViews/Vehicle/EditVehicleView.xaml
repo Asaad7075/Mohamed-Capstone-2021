@@ -1,0 +1,126 @@
+﻿<Window x:Class="WpfPresentation.LogisticsViews.Vehicle.EditVehicleView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:WpfPresentation.LogisticsViews.Vehicle"
+        xmlns:vehicleValidator="clr-namespace:WpfPresentation.Validators"
+        xmlns:controls="clr-namespace:WpfPresentation.CustomUserControls"
+        mc:Ignorable="d" Background="GhostWhite"
+        Title="Edit Vehicle" MaxHeight="350" Height="350" MinHeight="350" MaxWidth="600" Width="600" MinWidth="600" WindowStartupLocation="CenterScreen"
+        Icon="pack://application:,,,/DataAccessFakes;component/BackOnTrack.png">
+    <!-- 
+        Chantal Shirley
+        Created: 2021/03/24
+        Edit Vehicle 
+        Information Page
+    ******************************
+        Chantal Shirley
+        Updated: 2021/03/25
+        Implementing validations 
+        on interface.
+    -->
+
+    <Window.Resources>
+        <!--<vehicleValidator:LicensePlateValidator x:Key="licPlateNo"/>
+        <vehicleValidator:MileageValidator x:Key="mileage"/>-->
+
+        <Style x:Key="textStyleTextBox" TargetType="TextBox">
+            <Setter Property="Foreground" Value="#333333" />
+            <Setter Property="MaxLength" Value="40" />
+            <Setter Property="Width" Value="392" />
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" 
+                    Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+    </Window.Resources>
+    
+    <Grid>
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition Width="400"></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <TextBlock Grid.Row="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center"
+                   FontSize="30" FontWeight="Bold">
+            Edit Vehicle Information
+        </TextBlock>
+        <StackPanel Grid.Row="1" VerticalAlignment="Center">
+            <Label x:Name="lblLicPlateNo" FontSize="15" Content="License Plate Number" 
+                   HorizontalAlignment="Center" FontWeight="Bold" />
+            <TextBox x:Name="txtBoxLicPlateNo" 
+                     Height="20" Width="150" Validation.Error="txtBoxLicPlateNo_Error" >
+                <TextBox.Text >
+                    <Binding Path="LicensePlateNumber" Mode="TwoWay" NotifyOnValidationError="True" UpdateSourceTrigger="PropertyChanged" >
+                        <Binding.ValidationRules>
+                            <vehicleValidator:LicensePlateValidator x:Name="LicPlateNumberValidator"/>
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="2" VerticalAlignment="Center" >
+            <Label x:Name="lblMileage" FontSize="15" Content="Mileage" 
+                   HorizontalAlignment="Center" FontWeight="Bold" />
+            <TextBox x:Name="txtBoxMileage"  Height="20" Width="150" Validation.Error="txtBoxMileage_Error"
+                     Style="{StaticResource textStyleTextBox}"  >
+                <TextBox.Text >
+                    <Binding Path="Mileage" Mode="TwoWay" UpdateSourceTrigger="PropertyChanged"  NotifyOnValidationError="True">
+                        <Binding.ValidationRules>
+                            <vehicleValidator:MileageValidator x:Name="MileValidator" />
+                        </Binding.ValidationRules>
+                    </Binding>
+                </TextBox.Text>
+            </TextBox>
+        </StackPanel>
+
+        <StackPanel Grid.Row="3" Grid.RowSpan="2" VerticalAlignment="Top" Grid.ColumnSpan="2" HorizontalAlignment="Left" >
+            <Label x:Name="lblUploadImage" Grid.Column="0" FontSize="15" Content="Upload Image" 
+                   HorizontalAlignment="Left" FontWeight="Bold" Margin="75 0"/>
+            <controls:FileUploader  x:Name="FileUploader" Width="250" controls:LayoutUpdated="FileUploader_LayoutUpdated"
+                                   SelectedMode="ImageMode" />
+        </StackPanel>
+
+        <WrapPanel Grid.Row="1" Grid.Column="1" HorizontalAlignment="Center" VerticalAlignment="Center"
+                    Grid.RowSpan="3">
+            <Border BorderBrush="DarkBlue" BorderThickness="3" HorizontalAlignment="Center" VerticalAlignment="Center"
+                 Width="150" Margin="0 0 0 15">
+                <Image x:Name="imgVehicle" />
+                <!--Source="pack://application:,,,/DataAccessFakes;component/BackOnTrack.png" />-->
+            </Border>
+
+            <ScrollViewer>
+                <StackPanel Width="150" VerticalAlignment="Center" Margin="10 0 0 0" Background="WhiteSmoke" >
+                    <Label Content="Make:" FontWeight="Bold"/>
+                    <Label x:Name="lblMake"  Content="{Binding Path=VehicleMake}" FontSize="12" />
+                    <Label Content="Model:" FontWeight="Bold"/>
+                    <Label x:Name="lblModel" Content="{Binding Path=VehicleModel}" FontSize="12" />
+                    <Label Content="Vin No.:" FontWeight="Bold"/>
+                    <Label x:Name="lblVinNumber" Content="{Binding Path=VinNumber}" FontSize="12" />
+                    <Label Content="Year:" FontWeight="Bold"/>
+                    <Label x:Name="lblYear" Content="{Binding Path=VehicleYear}" FontSize="12" />
+                </StackPanel>
+            </ScrollViewer>
+
+        </WrapPanel>
+
+        <WrapPanel  Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="9" HorizontalAlignment="Right">
+            <Button x:Name="btnCancel" Content="Cancel" 
+                Width="100" Margin="10" FontFamily="Helvetica" FontSize="12" Padding="5" 
+                HorizontalContentAlignment="Center" Click="btnCancel_Click"/>
+            <Button x:Name="btnUpdateVehicle" Content="Update" Grid.Column="1" Grid.ColumnSpan="2" Grid.Row="9" VerticalAlignment="Center" Margin="10 10 50 10"
+                            Width="100" FontFamily="Helvetica" FontSize="12" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnUpdateVehicle_Click"/>
+        </WrapPanel>
+
+    </Grid>
+</Window>

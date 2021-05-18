@@ -1,0 +1,33 @@
+﻿/*
+    Chantal Shirley
+    Created: 2021/04/08
+*/
+
+.panel-heading {
+    margin: 0 auto;
+    overflow: hidden;
+    text-align: center;
+}
+
+.panel-head-child {
+    margin: 0 50px 0 0;
+    float: left;
+}
+
+.panel-body-child {
+    margin: 0 50px 0 0;
+    float: left;
+}
+
+.panel-head-child-end {
+    float: right;
+    margin: 0;
+}
+
+.child-text {
+    text-align: center;
+}
+
+.child-image {
+    text-align: center;
+}

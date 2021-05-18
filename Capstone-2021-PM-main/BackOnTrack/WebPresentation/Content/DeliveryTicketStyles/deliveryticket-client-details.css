@@ -1,0 +1,30 @@
+﻿/*
+    Chantal Shirley
+    Created: 2021/04/15
+*/
+
+.panel-custom {
+    margin: 0 auto;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.container-receipt {
+    display: block;
+    margin: 0 auto;
+}
+
+.panel-child {
+    display: block;
+    margin: 0 auto;
+    padding: 10px 10px 10px 10px;
+}
+
+.order-details {
+    display: block;
+    width: 100%;
+}
+
+.ordered-items {
+    display: flex;
+    flex-direction: column;
+}

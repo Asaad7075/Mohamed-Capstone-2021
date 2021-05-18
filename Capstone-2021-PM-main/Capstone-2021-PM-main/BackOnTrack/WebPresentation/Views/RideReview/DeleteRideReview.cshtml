@@ -1,0 +1,124 @@
+﻿@model DomainModels.RideReviewVM
+
+@{
+    ViewBag.Title = "DeleteRideReview";
+}
+@*Nate Hepker
+    Created: 2021/04/23
+    Displays the delete ride review confermation page to require a 
+    user to confirm the delete to ensure they really want to.
+*@
+<h2>Delete Ride Review</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>RideReviewVM</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.TicketID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.TicketID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientID)
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientFirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientLastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientDriverRating)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientDriverRating)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ClientComment)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ClientComment)
+        </dd>
+
+        <dt class="hidden">
+            @Html.DisplayNameFor(model => model.DriverID)
+        </dt>
+
+        <dd class="hidden">
+            @Html.DisplayFor(model => model.DriverID)
+        </dd>
+
+        <dt class="hidden">
+            @Html.DisplayNameFor(model => model.DriverClientRating)
+        </dt>
+
+        <dd class="hidden">
+            @Html.DisplayFor(model => model.DriverClientRating)
+        </dd>
+
+        <dt class="hidden">
+            @Html.DisplayNameFor(model => model.DriverComment)
+        </dt>
+
+        <dd class="hidden">
+            @Html.DisplayFor(model => model.DriverComment)
+        </dd>
+
+        <dt class="hidden">
+            @Html.DisplayNameFor(model => model.EmployeeFirstName)
+        </dt>
+
+        <dd class="hidden">
+            @Html.DisplayFor(model => model.EmployeeFirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmployeeLastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmployeeLastName)
+        </dd>
+
+        <dt class="hidden">
+            @Html.DisplayNameFor(model => model.TicketType)
+        </dt>
+
+        <dd class="hidden">
+            @Html.DisplayFor(model => model.TicketType)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "ViewAllRideReviews")
+        </div>
+    }
+</div>

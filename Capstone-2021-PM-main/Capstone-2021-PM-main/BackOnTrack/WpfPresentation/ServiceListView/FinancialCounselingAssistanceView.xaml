@@ -1,0 +1,54 @@
+﻿<Page x:Class="WpfPresentation.ServiceListView.FinancialCounselingAssistanceView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation.ServiceListView"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="ViewFinancialCounselingTypes">
+    <!-- Chase Martin
+        Created: 2020/03/09
+       Financial Counseling types Page-->
+    <Grid>
+        <Grid x:Name="grdViewCounseling" Margin="5px" Background="GhostWhite" Visibility="Visible" IsEnabled="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="375"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="430"></RowDefinition>
+                <RowDefinition Height="90" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="borderHeaderViewCounseling" Background="LightGray" Grid.Row="0" Grid.ColumnSpan="2"></Border>
+            <TextBlock x:Name="txtBlkHeaderViewCounseling" Grid.Row="0" Grid.ColumnSpan="2" Margin="3px" FontWeight="Bold" FontSize="16">
+                            Financial Counseling
+            </TextBlock>
+
+            <ScrollViewer Grid.Row="1" Grid.RowSpan="9" Grid.ColumnSpan="2">
+                <Border Background="WhiteSmoke" Margin="15">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" />
+                    </Border.Effect>
+                </Border>
+            </ScrollViewer>
+
+            <TextBlock x:Name="txtBlk" Grid.Row="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" FontFamily="Helvetica" Margin="0 25 0 0" >
+                           Financial Assistance
+            </TextBlock>
+            <Button x:Name="btnLocalProviders" Margin="334,43,356.4,318.4" 
+               HorizontalAlignment="Center" Width="300"
+               Grid.Row="2" Click="btnLocalProviders_Click" Content="View local Financial Councilors" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnTypes" Margin="334,161,356.4,199.4" 
+               HorizontalAlignment="Center" Width="300"
+               Grid.Row="2" Click="btnTypes_Click" Content="View Financial Counciling Types" Grid.ColumnSpan="2"/>
+            <Button x:Name="btnBack" Margin="35.8,296,448.4,90.4" 
+               HorizontalAlignment="Center" Width="131"
+               Grid.Row="2" Click="btnBack_Click" Content="Back" Grid.Column="1"/>
+
+        </Grid>
+    </Grid>
+</Page>

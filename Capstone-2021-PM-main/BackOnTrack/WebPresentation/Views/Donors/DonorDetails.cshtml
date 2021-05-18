@@ -1,0 +1,123 @@
+﻿@model DomainModels.Donor
+
+@{
+    ViewBag.Title = "DonorDetails";
+}
+
+<h2>Donor Details</h2>
+<br />
+
+<div>
+    
+    <hr />
+    <dl class="dl-horizontal table-responsive">
+        <dt>
+            @Html.DisplayNameFor(model => model.Business)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Business)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Individual)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Individual)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.BusinessName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.BusinessName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FirstName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.LastName)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.LastName)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MiddleInitial)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MiddleInitial)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Address)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Address)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.ZipCode)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+
+        @*<dt>
+            @Html.DisplayNameFor(model => model.SS)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.SS)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EIN)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EIN)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Active)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Active)
+        </dd>*@
+
+    </dl>
+</div>
+<p>
+    @*@Html.ActionLink("Edit", "Edit", new { id = Model.DonorID }) |*@
+    @Html.ActionLink("Back to List", "ViewAllDonors")
+</p>

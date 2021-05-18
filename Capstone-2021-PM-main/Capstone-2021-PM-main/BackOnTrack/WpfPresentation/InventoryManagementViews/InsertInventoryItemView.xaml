@@ -1,0 +1,74 @@
+﻿<Page x:Class="WpfPresentation.InventoryManagementViews.InsertInventoryItemView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation.InventoryManagementViews"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="InsertInventoryItemView">
+
+    <Grid>
+        <!-- Thomas Stout
+        Created: 2020/02/17
+        Add Item page-->
+        <Grid x:Name="grdAddItemToInventory" Margin="5px" Background="GhostWhite" Visibility="Visible" IsEnabled="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="375"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="75"></RowDefinition>
+                <RowDefinition Height="110"></RowDefinition>
+                <RowDefinition Height="110"></RowDefinition>
+                <RowDefinition Height="130"></RowDefinition>
+                <RowDefinition Height="90" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="borderHeaderAddItem" Background="LightGray" Grid.Row="0" Grid.ColumnSpan="2"></Border>
+            <TextBlock x:Name="txtBlkHeaderAddItem" Grid.Row="0" Grid.ColumnSpan="2" Margin="3px" FontWeight="Bold" FontSize="16">
+                            Inventory Management: Inventory Specialist
+            </TextBlock>
+
+            <ScrollViewer Grid.Row="1" Grid.RowSpan="9" Grid.ColumnSpan="2">
+                <Border Background="WhiteSmoke" Margin="15">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" />
+                    </Border.Effect>
+                </Border>
+            </ScrollViewer>
+
+            <TextBlock x:Name="txtBlk" Grid.Row="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" FontFamily="Helvetica" Margin="0 25 0 0" >
+                            Add Item To Inventory
+            </TextBlock>
+
+            <TextBlock x:Name="txtBlkBodyAddItem" Grid.Row="2" Grid.ColumnSpan="2" Margin="0 0 300 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Helvetica"
+                                   FontSize="25" FontWeight="Bold">
+                            Fill in all areas of the form:
+            </TextBlock>
+
+            <Label x:Name="lblItemName" Content="Item Name:" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica"></Label>
+            <TextBox x:Name="txtItemName" Grid.Row="3" Grid.Column="1" Margin="10 10 50 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16"></TextBox>
+
+            <Label x:Name="lblItemQuantity" Content="Item Quantity:" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica"></Label>
+            <TextBox x:Name="txtItemQuantity" Grid.Row="4" Grid.Column="1" Margin="10 10 50 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16"></TextBox>
+
+            <Label x:Name="lblItemDescription" Content="Item Description:" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right"
+                               FontSize="16" FontFamily="Helvetica"></Label>
+            <TextBox x:Name="txtItemDescription" Grid.Row="5" Grid.Column="1" Margin="10 10 50 10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center"
+                                 FontSize="16"></TextBox>
+
+            <Button x:Name="btnAddItemInformation" Content="Save" Grid.Column="1" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                Width="200" Margin="15" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnAddItemInformation_Click"/>
+
+            <Button x:Name="btnCancelAddItemInformation" Content="Cancel" Grid.Column="1" Grid.Row="9" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                Width="200" Margin="230 15 0 0" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnCancelAddItemInformation_Click"/>
+        </Grid>
+    </Grid>
+</Page>

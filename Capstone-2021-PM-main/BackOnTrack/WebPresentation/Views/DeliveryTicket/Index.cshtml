@@ -1,0 +1,108 @@
+﻿@*
+    Chantal Shirley
+    Created: 2021/04/08
+    Designs for delivery tickets.
+    ----------------------------------
+    Chantal Shirley
+    Updated: 2021/04/11
+    Added images.
+    ----------------------------------
+    Chantal Shirley
+    Updated: 2021/04/20
+    Removed images to reflect redesign
+    with multiple items per order.
+*@
+@using DomainModels.Tickets
+@model IEnumerable <DomainModels.Tickets.DeliveryTicketVM>
+
+@{
+    ViewBag.Title = "Delivery Ticket";
+}
+
+@section CustomStyling {
+    <link href="~/Content/DeliveryTicketStyles/deliveryticket-client-home.css" rel="stylesheet" type="text/css" />
+}
+
+<h2>Ordered Items</h2>
+
+
+<div class="panel-group">
+    @if (Model.Count() > 0)
+    {
+        @*@if (Model != null && @Model.Tickets.GetType().Equals(typeof(List<DeliveryTicketVM>)) && Model.Tickets.Count > 0)*@
+            foreach (DeliveryTicketVM ticket in Model)
+            {
+                <div class="panel panel-default" style="min-width:200px;">
+                    <div class="panel-heading">
+                        <div class="panel-head-child">
+                            <strong>Ticket Id #</strong>
+                            <div>@ticket.TicketID</div>
+                        </div>
+                        <div class="panel-head-child">
+                            <strong>Created On:</strong>
+                            <div>@ticket.CreatedAt</div>
+                        </div>
+                        <div class="panel-head-child-end">
+                            <strong>Order Info</strong>
+                            <div>
+                                <a href="mailto:help@back-on-track.com?cc=helpdesk@back-on-track.com
+                               &subject= Delivery Question | Order Number @ticket.OrderID&Body=Dear Back-On-Track,">Questions?</a> |
+                                @Html.ActionLink("Details", "Details", new { ticket.OrderID })
+                            </div>
+                        </div>
+                    </div>
+                    <div class="panel-body">
+                        <div style="display: block;margin: auto;width:50%;">
+                            <div class="child-text">
+                                Status:
+                                @{
+                                    switch (@ticket.StatusDescription)
+                                    {
+                                        case "Completed":
+                                            <p style="color:darkgreen; font-weight:bold;">Completed</p>
+                                            break;
+                                        case "Awaiting Assignment":
+                                            <p style="color:darkgoldenrod; font-weight:bold;">Awaiting Assignment</p>
+                                            break;
+                                        default:
+                                            <p style="color:firebrick; font-weight:bold;">Unknown</p>
+                                            break;
+                                    }
+                                }
+                            </div>
+                            @* Hiding previous implementation with dynamic object *@
+                            <!--<div class="child-image">-->
+                            @* Check to see if the repo has any images to display; conversion inspiration from https://stackoverflow.com/questions/17952514/asp-net-mvc-how-to-display-a-byte-array-image-from-model *@
+                            @*@if (@Model.ImagesRepo.GetType().Equals(typeof(Dictionary<int, byte[]>)))
+                                {
+                                    foreach (var key in Model.ImagesRepo)
+                                    {
+                                        if (key.Key == item.OrderID)
+                                        {
+                                            if (key.Value != null)
+                                            {
+                                                var base64 = Convert.ToBase64String(key.Value);
+                                                var image = String.Format("data:image/png;base64,{0}", base64);
+                                                <img src="@image" class="img-thumbnail" style="width:125px;" />
+                                            }
+                                        }
+                                    }
+                                }*@
+                            <!--</div>-->
+                        </div>
+                    </div>
+                </div>
+            }
+    }
+    else
+    {
+        <div style="text-align:center">
+            <h2>There are no deliveries to show!</h2>
+            @* Image Creative Commons free for use by Clker-Free-Vector-Image *@
+            <img src="https://cdn.pixabay.com/photo/2012/04/23/16/14/correct-38751_960_720.png" width="100" />
+            <h4>If this is a mistake, we are eager to resolve it! Email us below!</h4>
+            <a href="mailto:help@back-on-track.com?cc=helpdesk@back-on-track.com
+                &subject= Delivery Question&Body=Dear Back-On-Track,">Questions?</a>
+        </div>
+    }
+</div>

@@ -1,0 +1,92 @@
+﻿<Page x:Class="WpfPresentation.SupplyManagementViews.AddEditSupplyItem.pageAddEditSupplyItem"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation.SupplyManagementViews.AddEditSupplyItem"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="pageAddEditSupplyItem" Loaded="Page_Loaded">
+
+    <Grid Margin="0,0,0,31">
+        <!-- Richard Schroeder
+        Created: 2020/03/10
+        Add/Edit Supply Materials page-->
+
+        <Grid x:Name="grdAddEditSupplyItems" Margin="5px" Background="GhostWhite" Visibility="Visible" IsEnabled="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="270"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition Width="150"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="75"></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition></RowDefinition>
+                <RowDefinition Height="0"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="borderHeaderAddEditSupplyItems" Background="LightGray" Grid.Row="0" Grid.ColumnSpan="3"></Border>
+            <TextBlock x:Name="txtBlkHeaderAddEditSupplyItems" Grid.Row="0" Grid.ColumnSpan="3" Margin="3px" FontWeight="Bold" FontSize="16">
+                Supply Management: Supply Inventory
+            </TextBlock>
+
+            <ScrollViewer Grid.Row="1" Grid.RowSpan="9" Grid.ColumnSpan="3">
+                <Border Background="WhiteSmoke" Margin="15">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" />
+                    </Border.Effect>
+                    <WrapPanel x:Name="wrapAddEditSupplyItemsContainer" Margin="20" ></WrapPanel>
+                </Border>
+            </ScrollViewer>
+            
+            <!-- Material Info Blocks -->
+            <Label Grid.Row="1" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="35 35 0 0">
+                Item ID
+            </Label>
+            <TextBox x:Name="txtSupplyItemId" Text="Added automatically" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" Width="230" Height="40" VerticalAlignment="Bottom" Grid.Row="1" IsReadOnly="True"></TextBox>
+            
+            <Label Grid.Row="2" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="35 8 0 0">
+                Serial Number
+            </Label>
+            <TextBox x:Name="txtSupplySerialNumber" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" Width="230" Height="40" VerticalAlignment="Bottom" Grid.Row="2" MaxLength="6"></TextBox>
+
+            <Label Grid.Row="4" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="35 15 0 0">
+                Quantity
+            </Label>
+            <TextBox x:Name="txtSupplyMaterialName" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" Width="230" Height="40" VerticalAlignment="Bottom" Grid.Row="3"></TextBox>
+            
+            <Label Grid.Row="3" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="35 15 0 0">
+                Material Name
+            </Label>
+            <TextBox x:Name="txtSupplyInventoryQuantity" FontSize="16" FontWeight="Bold" VerticalContentAlignment="Center" Width="230" Height="40" VerticalAlignment="Bottom" Grid.Row="4"></TextBox>
+
+            <Label Grid.Row="5" VerticalAlignment="Top" FontWeight="Bold" FontSize="16" Margin="35 15 0 0">
+                Description
+            </Label>
+            <TextBox x:Name="txtSupplyDescription" Width="230" Grid.RowSpan="3" Grid.Row="5" Margin="20 40 20 30" TextWrapping="Wrap"></TextBox>
+            <!-- End Material Info Blocks -->
+            
+            <!-- Material Action Buttons -->
+            <Button x:Name="btnAddSupplyItem" Grid.Column="2" Content="Add" FontWeight="Bold" FontSize="16" Grid.Row="1" Height="50" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="btnAddSupplyItem_Click"></Button>
+            <Button x:Name="btnEditSupplyItem" Grid.Column="2" Content="Edit" FontWeight="Bold" FontSize="16" Grid.Row="2" Height="50" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="btnEditSupplyItem_Click"></Button>
+            <Button x:Name="btnDeleteSupplyItem" Grid.Column="2" Content="Remove" FontWeight="Bold" FontSize="16" Grid.Row="3" Height="50" Width="100" HorizontalAlignment="Left" VerticalAlignment="Bottom" Click="btnDeleteSupplyItem_Click"></Button>
+            <!-- End Material Action Buttons -->
+
+            <!--Materials Data Grid-->
+            <Border Grid.Column="1" Grid.Row="1" VerticalAlignment="Center" Margin="10" BorderThickness="1" BorderBrush="Gray">
+                <TextBlock FontWeight="Bold" FontSize="16" Background="LightGray">
+                    Materials
+                </TextBlock>
+            </Border>
+            
+            <DataGrid x:Name="dgSupplyInventory" IsReadOnly="True" Grid.Column="1" Grid.Row="1" Grid.RowSpan="7" Margin="10 60 10 30" MouseDoubleClick="dgSupplyInventory_MouseDoubleClick"></DataGrid>
+            <!--End Materials Data Grid-->
+        </Grid>
+    </Grid>
+</Page>

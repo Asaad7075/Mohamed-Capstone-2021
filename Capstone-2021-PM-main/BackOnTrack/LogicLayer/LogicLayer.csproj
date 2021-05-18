@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{52DAA192-A86D-481E-9E97-86D995F1A68D}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LogicLayer</RootNamespace>
+    <AssemblyName>LogicLayer</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BingMapsRESTToolkit, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BingMapsRESTToolkit.1.1.4\lib\net45\BingMapsRESTToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="ChildcareManager.cs" />
+    <Compile Include="ClientManager.cs" />
+    <Compile Include="DeliveryTicketManager.cs" />
+    <Compile Include="DonationFormManager.cs" />
+    <Compile Include="DonationManager.cs" />
+    <Compile Include="DonorManager.cs" />
+    <Compile Include="DriversLicenseManager.cs" />
+    <Compile Include="FinancialCounselingManager.cs" />
+    <Compile Include="GeoLocationManager.cs" />
+    <Compile Include="InventoryManager.cs" />
+    <Compile Include="OrderManager.cs" />
+    <Compile Include="PickUpTicketManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="RideTicketManager.cs" />
+    <Compile Include="RideReviewManager.cs" />
+    <Compile Include="RouteManager.cs" />
+    <Compile Include="ServiceCategoriesManager.cs" />
+    <Compile Include="ServiceManager.cs" />
+    <Compile Include="ServiceProviderManager.cs" />
+    <Compile Include="ServiceReviewManager.cs" />
+    <Compile Include="StringHelpers.cs" />
+    <Compile Include="EmployeeManager.cs" />
+    <Compile Include="SupplyInventoryManager.cs" />
+    <Compile Include="TicketStatusManager.cs" />
+    <Compile Include="USGovernmentTransportationManager.cs" />
+    <Compile Include="VehicleImageManager.cs" />
+    <Compile Include="VehicleMaintenanceReportManager.cs" />
+    <Compile Include="VehicleMaintenanceStatusManager.cs" />
+    <Compile Include="VehicleManager.cs" />
+    <Compile Include="ZipCodeManager.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessInterfaces\DataAccessInterfaces.csproj">
+      <Project>{270dcdb2-fc48-4ae6-9ec4-a1f2ec8f8141}</Project>
+      <Name>DataAccessInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessLayer\DataAccessLayer.csproj">
+      <Project>{e47892cf-be39-4107-8037-a3866b930a68}</Project>
+      <Name>DataAccessLayer</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainModels\DomainModels.csproj">
+      <Project>{12b501f8-4f38-4755-8eba-d810bd243705}</Project>
+      <Name>DomainModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicInterfaces\LogicInterfaces.csproj">
+      <Project>{e361b80b-f414-4d3f-bfec-453dbada2fb1}</Project>
+      <Name>LogicInterfaces</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="app.config" />
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

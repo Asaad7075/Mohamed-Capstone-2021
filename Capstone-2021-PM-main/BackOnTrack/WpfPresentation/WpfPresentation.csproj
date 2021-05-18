@@ -1,0 +1,454 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{ABF85D3E-C8B4-4F4E-BAED-EFF62EE7AA21}</ProjectGuid>
+    <OutputType>WinExe</OutputType>
+    <RootNamespace>WpfPresentation</RootNamespace>
+    <AssemblyName>WpfPresentation</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <ProjectTypeGuids>{60dc8134-eba5-43b8-bcc9-bb4bc16c2548};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
+    <WarningLevel>4</WarningLevel>
+    <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <PlatformTarget>AnyCPU</PlatformTarget>
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BingMapsRESTToolkit, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BingMapsRESTToolkit.1.1.4\lib\net45\BingMapsRESTToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Maps.MapControl.WPF, Version=1.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Maps.MapControl.WPF.1.0.0.3\lib\net40-Client\Microsoft.Maps.MapControl.WPF.dll</HintPath>
+    </Reference>
+    <Reference Include="System" />
+    <Reference Include="System.Collections.NonGeneric, Version=4.0.2.0, Culture=neutral, PublicKeyToken=b03f5f7f11d50a3a, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Collections.NonGeneric.4.3.0\lib\net46\System.Collections.NonGeneric.dll</HintPath>
+      <Private>True</Private>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Configuration" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Device" />
+    <Reference Include="System.Windows.Forms" />
+    <Reference Include="System.Xml" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xaml">
+      <RequiredTargetFramework>4.0</RequiredTargetFramework>
+    </Reference>
+    <Reference Include="WindowsBase" />
+    <Reference Include="PresentationCore" />
+    <Reference Include="PresentationFramework" />
+  </ItemGroup>
+  <ItemGroup>
+    <ApplicationDefinition Include="App.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </ApplicationDefinition>
+    <Compile Include="CustomUserControls\FileUploader\FileModeEnums.cs" />
+    <Compile Include="CustomUserControls\FileUploader\ImageUploader.cs" />
+    <Compile Include="InventoryManagementViews\DeleteInventoryItemView.xaml.cs" />
+    <Compile Include="InventoryManagementViews\EditInventoryItemView.xaml.cs" />
+    <Compile Include="InventoryManagementViews\InsertInventoryItemView.xaml.cs" />
+    <Compile Include="InventoryManagementViews\ViewInventoryItemView.xaml.cs" />
+    <Compile Include="LogisticsViews\DriversLicense\pageDriversLicenseFormView.xaml.cs">
+      <DependentUpon>pageDriversLicenseFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\RideReview\pageAddRideReviewClientFromDriver.xaml.cs">
+      <DependentUpon>pageAddRideReviewClientFromDriver.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\RideReview\pageViewRideReviews.xaml.cs">
+      <DependentUpon>pageViewRideReviews.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Route\AddRoute.xaml.cs">
+      <DependentUpon>AddRoute.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Route\AddRouteTwo.xaml.cs">
+      <DependentUpon>AddRouteTwo.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Route\map.xaml.cs">
+      <DependentUpon>map.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Route\pageRouteNav.xaml.cs">
+      <DependentUpon>pageRouteNav.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Route\pageDriverRouteList.xaml.cs">
+      <DependentUpon>pageDriverRouteList.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Tickets\pageDeliveryTicketForm.xaml.cs">
+      <DependentUpon>pageDeliveryTicketForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Tickets\pagePickUpTicketForm.xaml.cs">
+      <DependentUpon>pagePickUpTicketForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Tickets\pageRideTicketForm.xaml.cs">
+      <DependentUpon>pageRideTicketForm.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Tickets\pageTicketPortal.xaml.cs">
+      <DependentUpon>pageTicketPortal.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Tickets\pageViewDeliveryTickets.xaml.cs">
+      <DependentUpon>pageViewDeliveryTickets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Tickets\pageViewPickUpTickets.xaml.cs">
+      <DependentUpon>pageViewPickUpTickets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Tickets\pageViewRideTickets.xaml.cs">
+      <DependentUpon>pageViewRideTickets.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Tickets\TimePicker.xaml.cs">
+      <DependentUpon>TimePicker.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\VehicleMaintenanceReport\pageVehicleMaintenanceReportView.xaml.cs">
+      <DependentUpon>pageVehicleMaintenanceReportView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Tickets\pageDeliveryTicketForm.xaml.cs" />
+    <Compile Include="LogisticsViews\Tickets\pageViewDeliveryTickets.xaml.cs" />
+    <Compile Include="LogisticsViews\Tickets\TimePicker.xaml.cs" />
+    <Compile Include="LogisticsViews\Vehicle\EditVehicleView.xaml.cs">
+      <DependentUpon>EditVehicleView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Vehicle\pageVehicleFormView.xaml.cs">
+      <DependentUpon>pageVehicleFormView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Vehicle\pageVehicleListView.xaml.cs">
+      <DependentUpon>pageVehicleListView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="LogisticsViews\Vehicle\pageVehicleMaintenanceStatusView.xaml.cs">
+      <DependentUpon>pageVehicleMaintenanceStatusView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="MaterialHandlingView\AddDonationItem.xaml.cs" />
+    <Compile Include="MaterialHandlingView\AddDonor.xaml.cs" />
+    <Compile Include="MaterialHandlingView\CreateDonationForm.xaml.cs" />
+    <Compile Include="MaterialHandlingView\DonorView.xaml.cs" />
+    <Compile Include="MaterialHandlingView\EditDonationForm.xaml.cs" />
+    <Compile Include="MaterialHandlingView\EditDonationItem.xaml.cs" />
+    <Compile Include="MaterialHandlingView\EditDonor.xaml.cs" />
+    <Compile Include="MaterialHandlingView\ViewDonation.xaml.cs" />
+    <Compile Include="MaterialHandlingView\ViewDonationForms.xaml.cs" />
+    <Compile Include="CustomUserControls\FileUploader\FileUploader.xaml.cs">
+      <DependentUpon>FileUploader.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceListView\ChildcareAssistanceView.xaml.cs" />
+    <Compile Include="ServiceListView\FinancialCounselingAssistanceView.xaml.cs" />
+    <Compile Include="ServiceListView\ListChildcareTypesView.xaml.cs" />
+    <Compile Include="ServiceListView\ListFinancialCounselingTypesView.xaml.cs" />
+    <Compile Include="ServiceListView\ServiceProvidersView.xaml.cs">
+      <DependentUpon>ServiceProvidersView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="ServiceListView\ServicesView.xaml.cs">
+      <DependentUpon>ServicesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="SupplyManagementViews\AddEditSupplyItem\pageAddEditSupplyItem.xaml.cs">
+      <DependentUpon>pageAddEditSupplyItem.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserViews\AddEditEmployee\AddEditEmployee.xaml.cs" />
+    <Compile Include="UserViews\EditUserRoles\EditUserRolesView.xaml.cs">
+      <DependentUpon>EditUserRolesView.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="UserViews\ResetPassword\UNUSEDResetPassword.xaml.cs">
+      <DependentUpon>UNUSEDResetPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="frmResetPassword.xaml.cs">
+      <DependentUpon>frmResetPassword.xaml</DependentUpon>
+    </Compile>
+    <Compile Include="Validators\AddressBindingValidators.cs" />
+    <Compile Include="Validators\DriversLicenseBindingValidator.cs" />
+    <Compile Include="Validators\GenericBindingValidators.cs" />
+    <Compile Include="Validators\ValidationHelpers.cs" />
+    <Compile Include="Validators\VehicleBindingValidators.cs" />
+    <Compile Include="ZipCodeViews\AddZipCodeView.xaml.cs" />
+    <Compile Include="ZipCodeViews\EditZipCodeView.xaml.cs" />
+    <Compile Include="ZipCodeViews\ZipCodeListView.xaml.cs" />
+    <Compile Include="ZipCodeViews\ZipCodePage.xaml.cs">
+      <DependentUpon>ZipCodePage.xaml</DependentUpon>
+    </Compile>
+    <Page Include="InventoryManagementViews\DeleteInventoryItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InventoryManagementViews\EditInventoryItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InventoryManagementViews\InsertInventoryItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="InventoryManagementViews\ViewInventoryItemView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LogisticsViews\DriversLicense\pageDriversLicenseFormView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\RideReview\pageAddRideReviewClientFromDriver.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LogisticsViews\RideReview\pageViewRideReviews.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LogisticsViews\Route\AddRoute.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Route\AddRouteTwo.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Route\map.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Route\pageRouteNav.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Route\pageDriverRouteList.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Tickets\pageDeliveryTicketForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LogisticsViews\Tickets\pagePickUpTicketForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Tickets\pageRideTicketForm.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Tickets\pageTicketPortal.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Tickets\pageViewDeliveryTickets.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LogisticsViews\Tickets\pageViewPickUpTickets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Tickets\pageViewRideTickets.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\VehicleMaintenanceReport\pageVehicleMaintenanceReportView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Vehicle\EditVehicleView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Vehicle\pageVehicleFormView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="LogisticsViews\Vehicle\pageVehicleListView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Vehicle\pageVehicleMaintenanceStatusView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="LogisticsViews\Tickets\TimePicker.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="CustomUserControls\FileUploader\FileUploader.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="MainWindow.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Compile Include="App.xaml.cs">
+      <DependentUpon>App.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="MainWindow.xaml.cs">
+      <DependentUpon>MainWindow.xaml</DependentUpon>
+      <SubType>Code</SubType>
+    </Compile>
+    <Page Include="MaterialHandlingView\AddDonationItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MaterialHandlingView\AddDonor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MaterialHandlingView\CreateDonationForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MaterialHandlingView\DonorView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MaterialHandlingView\EditDonationForm.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MaterialHandlingView\EditDonationItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MaterialHandlingView\EditDonor.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MaterialHandlingView\ViewDonation.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="MaterialHandlingView\ViewDonationForms.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ServiceListView\ChildcareAssistanceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ServiceListView\FinancialCounselingAssistanceView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ServiceListView\ListChildcareTypesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ServiceListView\ListFinancialCounselingTypesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ServiceListView\ServiceProvidersView.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ServiceListView\ServicesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="SupplyManagementViews\AddEditSupplyItem\pageAddEditSupplyItem.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserViews\AddEditEmployee\AddEditEmployee.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserViews\EditUserRoles\EditUserRolesView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="UserViews\ResetPassword\UNUSEDResetPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="frmResetPassword.xaml">
+      <SubType>Designer</SubType>
+      <Generator>MSBuild:Compile</Generator>
+    </Page>
+    <Page Include="ZipCodeViews\AddZipCodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ZipCodeViews\EditZipCodeView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ZipCodeViews\ZipCodeListView.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Include="ZipCodeViews\ZipCodePage.xaml">
+      <Generator>MSBuild:Compile</Generator>
+      <SubType>Designer</SubType>
+    </Page>
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="Properties\AssemblyInfo.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Include="Properties\Resources.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Resources.resx</DependentUpon>
+    </Compile>
+    <Compile Include="Properties\Settings.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DependentUpon>Settings.settings</DependentUpon>
+      <DesignTimeSharedInput>True</DesignTimeSharedInput>
+    </Compile>
+    <EmbeddedResource Include="Properties\Resources.resx">
+      <Generator>ResXFileCodeGenerator</Generator>
+      <LastGenOutput>Resources.Designer.cs</LastGenOutput>
+    </EmbeddedResource>
+    <None Include="packages.config" />
+    <None Include="Properties\Settings.settings">
+      <Generator>SettingsSingleFileGenerator</Generator>
+      <LastGenOutput>Settings.Designer.cs</LastGenOutput>
+    </None>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="App.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessFakes\DataAccessFakes.csproj">
+      <Project>{1d4f9caa-b1e5-4d05-8711-af6ab0a1da51}</Project>
+      <Name>DataAccessFakes</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DataAccessInterfaces\DataAccessInterfaces.csproj">
+      <Project>{270dcdb2-fc48-4ae6-9ec4-a1f2ec8f8141}</Project>
+      <Name>DataAccessInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainModels\DomainModels.csproj">
+      <Project>{12b501f8-4f38-4755-8eba-d810bd243705}</Project>
+      <Name>DomainModels</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicInterfaces\LogicInterfaces.csproj">
+      <Project>{e361b80b-f414-4d3f-bfec-453dbada2fb1}</Project>
+      <Name>LogicInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\LogicLayer\LogicLayer.csproj">
+      <Project>{52daa192-a86d-481e-9e97-86d995f1a68d}</Project>
+      <Name>LogicLayer</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup />
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

@@ -1,0 +1,132 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30907.101
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WpfPresentation", "WpfPresentation\WpfPresentation.csproj", "{ABF85D3E-C8B4-4F4E-BAED-EFF62EE7AA21}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicTests", "LogicTests\LogicTests.csproj", "{607509CE-025C-4A28-BC3F-BCECF6681C35}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicInterfaces", "LogicInterfaces\LogicInterfaces.csproj", "{E361B80B-F414-4D3F-BFEC-453DBADA2FB1}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "LogicLayer", "LogicLayer\LogicLayer.csproj", "{52DAA192-A86D-481E-9E97-86D995F1A68D}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DomainModels", "DomainModels\DomainModels.csproj", "{12B501F8-4F38-4755-8EBA-D810BD243705}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessLayer", "DataAccessLayer\DataAccessLayer.csproj", "{E47892CF-BE39-4107-8037-A3866B930A68}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessInterfaces", "DataAccessInterfaces\DataAccessInterfaces.csproj", "{270DCDB2-FC48-4AE6-9EC4-A1F2EC8F8141}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DataAccessFakes", "DataAccessFakes\DataAccessFakes.csproj", "{1D4F9CAA-B1E5-4D05-8711-AF6AB0A1DA51}"
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Database Scripts", "Database Scripts", "{F03982E7-BFE3-4609-9ABA-49DA4EB2B169}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseScripts\AppImages.sql = DatabaseScripts\AppImages.sql
+		DatabaseScripts\BackOnTrack.bat = DatabaseScripts\BackOnTrack.bat
+		DatabaseScripts\BotDBCreation.sql = DatabaseScripts\BotDBCreation.sql
+		Childcare.sql = Childcare.sql
+		DatabaseScripts\Client.sql = DatabaseScripts\Client.sql
+		DatabaseScripts\DeliveryTicket.sql = DatabaseScripts\DeliveryTicket.sql
+		DatabaseScripts\Donation.sql = DatabaseScripts\Donation.sql
+		DatabaseScripts\DonationForm.sql = DatabaseScripts\DonationForm.sql
+		DatabaseScripts\Donor.sql = DatabaseScripts\Donor.sql
+		DatabaseScripts\DriversLicense.sql = DatabaseScripts\DriversLicense.sql
+		DatabaseScripts\DriversLicenseClasses.sql = DatabaseScripts\DriversLicenseClasses.sql
+		DatabaseScripts\EmployeeRoles.sql = DatabaseScripts\EmployeeRoles.sql
+		DatabaseScripts\Employees.sql = DatabaseScripts\Employees.sql
+		DatabaseScripts\Extra_Stored_Procedures.sql = DatabaseScripts\Extra_Stored_Procedures.sql
+		FinancialCounseling.sql = FinancialCounseling.sql
+		DatabaseScripts\GeoLocation.sql = DatabaseScripts\GeoLocation.sql
+		DatabaseScripts\GeoLocation_Load.sql = DatabaseScripts\GeoLocation_Load.sql
+		DatabaseScripts\InventoryItem.sql = DatabaseScripts\InventoryItem.sql
+		DatabaseScripts\Order.sql = DatabaseScripts\Order.sql
+		DatabaseScripts\PickUpTicket.sql = DatabaseScripts\PickUpTicket.sql
+		DatabaseScripts\RideReview.sql = DatabaseScripts\RideReview.sql
+		DatabaseScripts\RideTicket.sql = DatabaseScripts\RideTicket.sql
+		DatabaseScripts\Route.sql = DatabaseScripts\Route.sql
+		DatabaseScripts\Service.sql = DatabaseScripts\Service.sql
+		DatabaseScripts\SupplyItemInventory.sql = DatabaseScripts\SupplyItemInventory.sql
+		DatabaseScripts\Ticket.sql = DatabaseScripts\Ticket.sql
+		DatabaseScripts\TicketStatus.sql = DatabaseScripts\TicketStatus.sql
+		DatabaseScripts\TicketType.sql = DatabaseScripts\TicketType.sql
+		DatabaseScripts\UserRoles.sql = DatabaseScripts\UserRoles.sql
+		DatabaseScripts\VehicleImages.sql = DatabaseScripts\VehicleImages.sql
+		DatabaseScripts\VehicleMaintenanceReport.sql = DatabaseScripts\VehicleMaintenanceReport.sql
+		DatabaseScripts\VehicleMaintenanceStatus.sql = DatabaseScripts\VehicleMaintenanceStatus.sql
+		DatabaseScripts\VehicleMaintenanceType.sql = DatabaseScripts\VehicleMaintenanceType.sql
+		DatabaseScripts\Vehicles.sql = DatabaseScripts\Vehicles.sql
+		DatabaseScripts\VehicleViews.sql = DatabaseScripts\VehicleViews.sql
+		DatabaseScripts\Zip_Load.sql = DatabaseScripts\Zip_Load.sql
+		DatabaseScripts\ZipCode.sql = DatabaseScripts\ZipCode.sql
+	EndProjectSection
+EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Resources", "Resources", "{8338B002-6E62-4E55-B0BA-1AB5F366D270}"
+	ProjectSection(SolutionItems) = preProject
+		DatabaseScripts\Resources\BackOnTrack.png = DatabaseScripts\Resources\BackOnTrack.png
+		DatabaseScripts\Resources\Blue-Wheelchair.jpg = DatabaseScripts\Resources\Blue-Wheelchair.jpg
+		DatabaseScripts\Resources\DefaultVehicleImg.png = DatabaseScripts\Resources\DefaultVehicleImg.png
+		DatabaseScripts\Resources\HondaAccord.jpg = DatabaseScripts\Resources\HondaAccord.jpg
+		DatabaseScripts\Resources\HondaCivic.jpeg = DatabaseScripts\Resources\HondaCivic.jpeg
+		DatabaseScripts\Resources\KiaSedona.jpg = DatabaseScripts\Resources\KiaSedona.jpg
+		DatabaseScripts\Resources\Mercedes-BenzSprinter.jpg = DatabaseScripts\Resources\Mercedes-BenzSprinter.jpg
+		DatabaseScripts\Resources\OperatingRoomTent.jpg = DatabaseScripts\Resources\OperatingRoomTent.jpg
+		DatabaseScripts\Resources\PeterBilt579.jpg = DatabaseScripts\Resources\PeterBilt579.jpg
+		DatabaseScripts\Resources\PicnicTable.jpg = DatabaseScripts\Resources\PicnicTable.jpg
+		DatabaseScripts\Resources\ToyotaSienna.jpg = DatabaseScripts\Resources\ToyotaSienna.jpg
+	EndProjectSection
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "WebPresentation", "WebPresentation\WebPresentation.csproj", "{14DF00A9-D7B6-4344-A0CE-05643993F14A}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{ABF85D3E-C8B4-4F4E-BAED-EFF62EE7AA21}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{ABF85D3E-C8B4-4F4E-BAED-EFF62EE7AA21}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{ABF85D3E-C8B4-4F4E-BAED-EFF62EE7AA21}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{ABF85D3E-C8B4-4F4E-BAED-EFF62EE7AA21}.Release|Any CPU.Build.0 = Release|Any CPU
+		{607509CE-025C-4A28-BC3F-BCECF6681C35}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{607509CE-025C-4A28-BC3F-BCECF6681C35}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{607509CE-025C-4A28-BC3F-BCECF6681C35}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{607509CE-025C-4A28-BC3F-BCECF6681C35}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E361B80B-F414-4D3F-BFEC-453DBADA2FB1}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E361B80B-F414-4D3F-BFEC-453DBADA2FB1}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E361B80B-F414-4D3F-BFEC-453DBADA2FB1}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E361B80B-F414-4D3F-BFEC-453DBADA2FB1}.Release|Any CPU.Build.0 = Release|Any CPU
+		{52DAA192-A86D-481E-9E97-86D995F1A68D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{52DAA192-A86D-481E-9E97-86D995F1A68D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{52DAA192-A86D-481E-9E97-86D995F1A68D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{52DAA192-A86D-481E-9E97-86D995F1A68D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12B501F8-4F38-4755-8EBA-D810BD243705}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12B501F8-4F38-4755-8EBA-D810BD243705}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12B501F8-4F38-4755-8EBA-D810BD243705}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12B501F8-4F38-4755-8EBA-D810BD243705}.Release|Any CPU.Build.0 = Release|Any CPU
+		{E47892CF-BE39-4107-8037-A3866B930A68}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{E47892CF-BE39-4107-8037-A3866B930A68}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{E47892CF-BE39-4107-8037-A3866B930A68}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{E47892CF-BE39-4107-8037-A3866B930A68}.Release|Any CPU.Build.0 = Release|Any CPU
+		{270DCDB2-FC48-4AE6-9EC4-A1F2EC8F8141}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{270DCDB2-FC48-4AE6-9EC4-A1F2EC8F8141}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{270DCDB2-FC48-4AE6-9EC4-A1F2EC8F8141}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{270DCDB2-FC48-4AE6-9EC4-A1F2EC8F8141}.Release|Any CPU.Build.0 = Release|Any CPU
+		{1D4F9CAA-B1E5-4D05-8711-AF6AB0A1DA51}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{1D4F9CAA-B1E5-4D05-8711-AF6AB0A1DA51}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{1D4F9CAA-B1E5-4D05-8711-AF6AB0A1DA51}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{1D4F9CAA-B1E5-4D05-8711-AF6AB0A1DA51}.Release|Any CPU.Build.0 = Release|Any CPU
+		{14DF00A9-D7B6-4344-A0CE-05643993F14A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{14DF00A9-D7B6-4344-A0CE-05643993F14A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{14DF00A9-D7B6-4344-A0CE-05643993F14A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{14DF00A9-D7B6-4344-A0CE-05643993F14A}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(NestedProjects) = preSolution
+		{8338B002-6E62-4E55-B0BA-1AB5F366D270} = {F03982E7-BFE3-4609-9ABA-49DA4EB2B169}
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {8E51A79A-E789-4AFA-9C15-AE18574560BF}
+	EndGlobalSection
+EndGlobal

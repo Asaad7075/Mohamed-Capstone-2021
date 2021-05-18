@@ -1,0 +1,120 @@
+﻿<Page x:Class="WpfPresentation.LogisticsViews.Route.AddRoute"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WpfPresentation.LogisticsViews.Route"
+      xmlns:ticket="clr-namespace:DomainModels.Tickets;assembly=DomainModels"
+      xmlns:route="clr-namespace:DomainModels;assembly=DomainModels"
+      xmlns:sys="clr-namespace:System;assembly=mscorlib"
+      mc:Ignorable="d"
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="AddRoute" Background="White">
+    <!-- Zach Stultz
+        Created: 2020/02/26
+        Create/Add Route Page-->
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border x:Name="borderHeaderAddRoute" Background="LightGray" Grid.Row="0"></Border>
+        <TextBlock x:Name="txtBlkHeaderAddRoute" Grid.Row="0" Margin="3px" FontWeight="Bold" FontSize="16">
+                            Calendar
+        </TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="375"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid Grid.Row="1" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="115"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition Height="50"></RowDefinition>
+                </Grid.RowDefinitions>
+                <ListBox Grid.Row="1" Name="lstRoutes" HorizontalContentAlignment="Stretch" ScrollViewer.HorizontalScrollBarVisibility="Disabled">
+                    <ListBox.ItemTemplate>
+                        <DataTemplate DataType="{x:Type route:RouteVM}">
+                            <Border BorderThickness="1" BorderBrush="Gray" HorizontalAlignment="Stretch" >
+                            <Grid>
+                                    <Grid.ColumnDefinitions>
+                                        <ColumnDefinition></ColumnDefinition>
+                                        <ColumnDefinition></ColumnDefinition>
+                                    </Grid.ColumnDefinitions>
+                                    <Grid.RowDefinitions>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                        <RowDefinition></RowDefinition>
+                                    </Grid.RowDefinitions>
+                                    <Label Grid.Row="0" Grid.Column="0" FontSize="16" FontFamily="Helvetica" HorizontalAlignment="Left" VerticalAlignment="Center" Content="RouteID: "></Label>
+                                    <TextBlock Grid.Row="0" Grid.Column="1" FontSize="16" FontFamily="Helvetica" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding RouteID}"></TextBlock>
+                                    <Label Grid.Row="1" Grid.Column="0" FontSize="16" FontFamily="Helvetica" HorizontalAlignment="Left" VerticalAlignment="Center" Content="#of Tickets: "></Label>
+                                    <TextBlock Grid.Row="1" Grid.Column="1" FontSize="16" FontFamily="Helvetica" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding Tickets.Count}"></TextBlock>
+                                    <Label Grid.Row="2" Grid.Column="0" FontSize="16" FontFamily="Helvetica" HorizontalAlignment="Left" VerticalAlignment="Center" Content="Driver: "></Label>
+                                    <TextBlock Grid.Row="2" Grid.Column="1" FontSize="16" FontFamily="Helvetica" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding DriverName}"></TextBlock>
+                                    <Label Grid.Row="3" Grid.Column="0" FontSize="16" FontFamily="Helvetica" HorizontalAlignment="Left" VerticalAlignment="Center" Content="LicensePlate: "></Label>
+                                    <TextBlock Grid.Row="3" Grid.Column="1" FontSize="16" FontFamily="Helvetica" HorizontalAlignment="Left" VerticalAlignment="Center" Text="{Binding LicensePlateNumber}"></TextBlock>
+                            </Grid>
+                            </Border>
+                        </DataTemplate>
+                    </ListBox.ItemTemplate>
+                </ListBox>
+                <Grid Grid.Row="2">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button x:Name="btnEditRoute" 
+                            Grid.Column="0"
+                            FontSize="16" FontFamily="Helvetica" Content="Edit" Click="btnEditRoute_Click"/>
+                    <Button x:Name="btnDeleteRoute" 
+                            Grid.Column="1"
+                            FontSize="16" FontFamily="Helvetica" Content="Delete" Click="btnDeleteRoute_Click"/>
+                    <Button x:Name="btnRefreshRoutes" 
+                            Grid.Column="2"
+                            FontSize="16" FontFamily="Helvetica" Content="Refresh" Click="btnRefreshRoutes_Click" />
+                    <Button x:Name="btnCreateRoute" 
+                            Grid.Column="3" FontSize="16" FontFamily="Helvetica" Click="btnCreateRoute_Click">Create</Button>
+                </Grid>
+                <Grid Grid.Row="0" Name="spMetaData">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="230"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid.RowDefinitions>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Label Grid.Row="0" Grid.ColumnSpan="2" Name="lblCurrentDate" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontFamily="Helvetica"/>
+                    <Label Grid.Row="1" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontFamily="Helvetica" Content="Unassigned Deliveries: "/>
+                    <TextBlock Grid.Row="1" Grid.Column="1" Name="txtTotalDeliveries" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontFamily="Helvetica" Text="{Binding DeliveryUnassigned}"/>
+                    <Label Grid.Row="2" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontFamily="Helvetica" Content="Unassigned Donation Pickups: "/>
+                    <TextBlock Grid.Row="2" Grid.Column="1" Name ="txtTotalDonationPickups" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontFamily="Helvetica" Text="{Binding PickupUnassigned}"/>
+                    <Label Grid.Row="3" Grid.Column="0" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontFamily="Helvetica" Content="Unassigned Shuttle Requests: "/>
+                    <TextBlock Grid.Row="3" Grid.Column="1" Name="txtTotalShuttleRequests" HorizontalAlignment="Left" VerticalAlignment="Center" FontSize="16" FontFamily="Helvetica" Text="{Binding RideUnassigned}"/>
+                    
+                </Grid>
+
+                
+
+            </Grid>
+            <Grid Grid.Row="1" Grid.Column="1">
+                <Viewbox Height="600">
+                    <Calendar SelectionMode="SingleDate" x:Name="cDatePicker" 
+                              >
+                        <Calendar.BlackoutDates>
+                            <CalendarDateRange End="{x:Static sys:DateTime.Today }"/>
+                        </Calendar.BlackoutDates>
+                        
+                    </Calendar>
+                </Viewbox>
+            </Grid>
+        </Grid>
+    </Grid>
+</Page>

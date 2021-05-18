@@ -1,0 +1,44 @@
+﻿@*
+    Chantal Shirley
+    Created: 2021/04/29
+    Inital Designs for Home Landing Page.
+*@
+
+@{
+    ViewBag.Title = "Home Page";
+}
+
+@section CustomStyling {
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Antonio:wght@100&display=swap" rel="stylesheet">
+}
+
+<div class="jumbotron" style=" background-image: url(https://cdn.pixabay.com/photo/2016/12/19/10/16/hands-1917895_960_720.png);background-size:100%; background-position:center center; box-shadow: 0 4px 8px #d9d9d9; ">
+    <h1 style="background-color:black; color:ghostwhite; display:inline-block;font-family: 'Antonio', sans-serif; padding:0; margin-right:250px;">BACK-ON-TRACK</h1>
+    <p class="lead" style="background-color:black; color:ghostwhite; display:inline-block; font-family: 'Antonio', sans-serif;">CHANGING LIVES ONE DONATION, ONE SERVICE, AND ONE RIDE AT A TIME. GET INVOLVED TODAY!</p>
+    <p><a href="home/about" class="btn btn-default btn-lg">Learn more &raquo;</a></p>
+
+</div>
+
+<div class="row" style="text-align:center; background-color:#f0f0f0; border-radius:5px; box-shadow: 0 4px 8px #d9d9d9;">
+    <div class="col-md-4">
+        <h2>Donations</h2>
+        <img src="https://cdn.pixabay.com/photo/2017/07/08/10/44/parcel-2484036_960_720.png" height="150" style="border-radius:5px;margin:10px;" />
+        <p>
+            We accept, deliver, and distribute high-needs items for the Eastern-Iowa region. All of these items are free of cost to the clients we serve!
+        </p>
+        <p><a class="btn btn-default" href="@Url.Action("contact","home")">Contact Us! &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Services</h2>
+        <img src="https://cdn.pixabay.com/photo/2014/12/10/21/01/doctor-563428_960_720.jpg" height="150" style="border-radius:5px;margin:10px;" />
+        <p>We connect clients with community services, connect with Doctors to host free-clinic days, and so much more! Interested in providing or receiving services? Sign up today!</p>
+        <p><a class="btn btn-default" href="@Url.Action("register","account")">Register Today! &raquo;</a></p>
+    </div>
+    <div class="col-md-4">
+        <h2>Rides</h2>
+        <img src="https://cdn.pixabay.com/photo/2019/07/28/12/33/auto-4368663_960_720.jpg" height="150" style="border-radius:5px;margin:10px;" />
+        <p>No car? No problem. Our volunteers utilize our dedicated fleet of vehicles to help you move towards the right direction!</p>
+        <p><a class="btn btn-default" href="@Url.Action("register","account")">Schedule a Ride Today! &raquo;</a></p>
+    </div>
+</div>

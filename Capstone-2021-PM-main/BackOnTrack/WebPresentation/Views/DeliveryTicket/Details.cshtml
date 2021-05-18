@@ -1,0 +1,77 @@
+﻿@*
+    Chantal Shirley
+    Created: 2021/04/13
+    Designs for delivery ticket details
+    Image conversion inspiration from: https://stackoverflow.com/questions/52014404/convert-images-in-html-file-to-base64-using-c-sharp
+------------------------------------------------
+    Chantal Shirley
+    Updated: 2021/04/20
+    Updated view to display multiple items in an
+    order after making back-end changes.
+*@
+@model dynamic
+@using DomainModels.Tickets
+@using DomainModels
+
+@{
+    ViewBag.Title = "Order Details";
+}
+
+@section CustomStyling {
+    <link href="~/Content/DeliveryTicketStyles/deliveryticket-client-details.css" rel="stylesheet" type="text/css" />
+}
+
+@if (Model != null && @Model.Ticket.GetType().Equals(typeof(DeliveryTicketVM)) &&
+        @Model.Order.GetType().Equals(typeof(Order)))
+{
+    <h1>Order Details</h1>
+    <h5>Ordered on @Model.Ticket.CreatedAt.ToShortDateString() | Order # @Model.Ticket.OrderID | @Html.ActionLink("Your Orders", "Index")</h5>
+    <div class="panel panel-default panel-custom" style="width:75%;">
+        <div class="container-receipt">
+            <div style="margin: auto; text-align: center; padding-top:10px;">
+                <strong>Shipping Address</strong> <br />
+                @Model.Ticket.ClientFirstName&nbsp;@Model.Ticket.ClientLastName <br />
+                @Model.Ticket.StreetAddressLineOne <br />
+                @if (Model.Ticket.StreetAddressLineTwo != "" && Model.Ticket.StreetAddressLineTwo != null)
+                {
+                    @Model.Ticket.StreetAddressLineTwo; <br />
+                }
+                else
+                {
+                    @Model.Ticket.City<span>,&nbsp;</span>@Model.Ticket.State<span>&nbsp;</span>@Model.Ticket.ZipCode
+                }
+            </div>
+            <div style="text-align:center; padding: 10px;"><strong>Order Summary</strong> <br /></div>
+            <hr />
+            <div class="ordered-items">
+                @foreach (KeyValuePair<int, Donation> item in Model.Order.Items)
+                {
+                    <div>
+                        <div style="float:left; position:relative; margin:10px 0 0 10%;">
+                            Item: @item.Value.NameOfItem <br />
+                            Quantity:&#9;@item.Value.OrderQty <br />
+                            Expected Delivery: @Model.Ticket.EstimatedArrival.ToShortDateString() <br />
+                            <strong>
+                                Savings: @{
+                                    decimal newValue = item.Value.EstValue * item.Value.OrderQty;
+                                    @newValue.ToString("C");
+                                }
+                            </strong>
+                        </div>
+
+                        <div style="text-align:center; position:relative; margin:10px 10px 50px 0;">
+                            <strong>Ordered Item</strong> <br />
+                            @if (item.Value.DonatedImage != null)
+                            {
+                                var base64 = Convert.ToBase64String(item.Value.DonatedImage);
+                                var image = String.Format("data:image/png;base64,{0}", base64);
+                                <img src="@image" class="img-thumbnail" style="width:125px;" />
+                            }
+                        </div>
+                        <hr />
+                    </div>
+                }
+            </div>
+        </div>
+    </div>
+}

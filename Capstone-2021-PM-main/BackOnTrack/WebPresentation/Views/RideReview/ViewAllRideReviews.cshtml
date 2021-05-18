@@ -1,0 +1,76 @@
+﻿@model IEnumerable<DomainModels.RideReviewVM>
+
+@{
+    ViewBag.Title = "ViewAllRideReviews";
+}
+@*Nate Hepker
+    Created: 2021/04/06
+    Displays past reviews that were posted about a ride
+*@
+<h2>View All Ride Reviews</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.TicketID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientID)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientFirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientLastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientDriverRating)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClientComment)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmployeeLastName)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.TicketID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientID)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientFirstName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientLastName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientDriverRating)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ClientComment)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.EmployeeLastName)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditRideReview", item) |
+                @Html.ActionLink("Delete", "DeleteRideReview", item)
+            </td>
+        </tr>
+    }@*End for loop*@
+    <tr>
+        <td>
+            <button type="button" class="btn btn-outline-primary btn-lg">
+                @Html.ActionLink("View rides to review", "ViewRecentRides", "RideReview")
+            </button>
+        </td>
+    </tr>
+
+</table>

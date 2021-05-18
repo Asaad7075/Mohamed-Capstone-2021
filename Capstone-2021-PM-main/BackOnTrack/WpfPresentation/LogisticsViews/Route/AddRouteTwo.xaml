@@ -1,0 +1,349 @@
+﻿<Page x:Class="WpfPresentation.LogisticsViews.Route.AddRouteTwo"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+      xmlns:local="clr-namespace:WpfPresentation.LogisticsViews.Route"
+      xmlns:ticket="clr-namespace:DomainModels.Tickets;assembly=DomainModels"
+      xmlns:m="clr-namespace:Microsoft.Maps.MapControl.WPF;assembly=Microsoft.Maps.MapControl.WPF"
+      mc:Ignorable="d"
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="AddRouteTwo" Background="White" Loaded="Page_Loaded">
+
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition></RowDefinition>
+        </Grid.RowDefinitions>
+        <Border x:Name="borderHeaderAddRoute" Background="LightGray" Grid.Row="0"></Border>
+        <TextBlock x:Name="txtBlkHeaderAddRoute" Grid.Row="0" Margin="3px" FontWeight="Bold" FontSize="16">
+                            Route Planner
+        </TextBlock>
+        <Grid Grid.Row="1">
+            <Grid.RowDefinitions>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="*"></RowDefinition>
+            </Grid.RowDefinitions>
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="275"></ColumnDefinition>
+                <ColumnDefinition Width="275"></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <StackPanel Grid.Row="0" Grid.Column="0">
+                <TextBlock Text="Select Ticket Type" Margin="5 0"/>
+                <ComboBox x:Name="cboTicketType" SelectionChanged="cboTicketType_SelectionChanged"
+                          Margin="5" VerticalAlignment="Center">
+                    <ComboBoxItem Tag="1">Delivery Tickets</ComboBoxItem>
+                    <ComboBoxItem Tag="2">PickUp Tickets</ComboBoxItem>
+                    <ComboBoxItem Tag="3">Ride Tickets</ComboBoxItem>
+                </ComboBox>
+            </StackPanel>
+            <StackPanel Grid.Row="0" Grid.Column="1">
+                <TextBlock Text="Select a Driver" Margin="5 0"/>
+                <ComboBox Grid.Row="2" Grid.Column="2" x:Name="cboDriver"
+                          Margin="5" VerticalAlignment="Center"
+                                  ItemsSource="{Binding Drivers}"
+                                  DisplayMemberPath="FullName"
+                                  SelectedItem="{Binding Path=SelectedDriver, Mode=TwoWay}"
+                                  SelectedValuePath="FullName"
+                                  IsSynchronizedWithCurrentItem="True">
+                </ComboBox>
+                <TextBlock Text="Select a vechile" Margin="5 0"/>
+                <ComboBox Grid.Row="2" Grid.Column="2" x:Name="cboVechile"
+                          Margin="5" VerticalAlignment="Center"
+                                  ItemsSource="{Binding Vehicles}"
+                                  DisplayMemberPath="LicensePlateNumber"
+                                  SelectedItem="{Binding Path=SelectedVehicle, Mode=TwoWay}"
+                                  SelectedValuePath="LicensePlateNumber"
+                                  IsSynchronizedWithCurrentItem="True">
+                </ComboBox>
+            </StackPanel>
+
+            <Grid Grid.Row="0" Grid.Column="2" VerticalAlignment="Stretch">
+                <Grid.RowDefinitions>
+                    <RowDefinition></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <DatePicker x:Name="dpRouteDate" SelectedDate="{Binding DateOfRoute, Mode=TwoWay}"
+                            SelectedDateFormat="Long"
+                            Grid.Row="0"></DatePicker>
+
+                <Grid Grid.Row="1" VerticalAlignment="Bottom">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Button Height="auto" Width="auto" Grid.Column="0" BorderThickness="1 1 1 0"
+                            x:Name="btnSaveRoute" Click="btnSaveRoute_Click" >
+                        Save
+                    </Button>
+                    <Button x:Name="btnCalcRoute" Click="btnCalcRoute_Click"
+                            Height="auto" Width="auto" Grid.Column="1"  BorderThickness="1 1 1 0">
+                        Calc Route
+                    </Button>
+                    <Button Height="auto" Width="auto" Grid.Column="2"  BorderThickness="1 1 1 0" Click="Button_Click">
+                        Cancel
+                    </Button>
+                </Grid>
+            </Grid>
+            <m:Map 
+               x:Name="myMap"
+               Grid.Row="1"
+                Grid.Column="2"
+               Center="41.9779, -91.6656"
+               ZoomLevel="16"
+               />
+            <ListBox x:Name="lstUnassignedTickets"
+                     Grid.Row="1" Grid.Column="0"
+                     Loaded="lstUnassassignedTickets_Loaded" 
+                     HorizontalContentAlignment="Stretch"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"
+                     MouseMove="lstTickets_MouseMove"
+                     AllowDrop="True" Drop="lstTickets_Drop" MouseDoubleClick="lstUnassassignedTickets_MouseDoubleClick" PreviewMouseMove="lstTickets_PreviewMouseMove" >
+                <ListBox.Resources>
+                    <DataTemplate DataType="{x:Type ticket:PickUpTicketVM}">
+                        <Border BorderBrush="Purple" BorderThickness="3" MouseDown="lstTickets_MouseDown">
+                            <StackPanel>
+                                <TextBlock Text="{Binding DonationID}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding FullAddress}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding CreatedAt}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding StatusDescription}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type ticket:DeliveryTicketVM}">
+                        <Border BorderBrush="Orange" BorderThickness="3" MouseDown="lstTickets_MouseDown">
+                            <StackPanel>
+                                <TextBlock Text="{Binding ClientFullName}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding FullAddress}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding CreatedAt}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding StatusDescription}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type ticket:RideTicketVM}">
+                        <Border BorderBrush="Teal" BorderThickness="3" MouseDown="lstTickets_MouseDown">
+                            <StackPanel>
+                                <TextBlock Text="{Binding ClientFullName}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding FetchFullAddress}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding DestinationFullAddress}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding CreatedAt}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding StatusDescription}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.Resources>
+            </ListBox>
+            <ListBox x:Name="lstAssignedTickets"
+                     HorizontalContentAlignment="Stretch"
+                      ScrollViewer.HorizontalScrollBarVisibility="Disabled"   
+                     Grid.Row="1" Grid.Column="1"
+                     MouseMove="lstTickets_MouseMove"
+                     AllowDrop="True" Drop="lstTickets_Drop"
+                     Loaded="lstAssignedTickets_Loaded" MouseDoubleClick="lstAssignedTickets_MouseDoubleClick" PreviewMouseMove="lstTickets_PreviewMouseMove" MouseDown="lstTickets_MouseDown"
+                     >
+                <ListBox.Resources>
+                    <DataTemplate DataType="{x:Type ticket:PickUpTicketVM}">
+                        <Border BorderBrush="Purple" BorderThickness="3" MouseDown="lstTickets_MouseDown">
+                            <StackPanel>
+                                <TextBlock Text="{Binding DonationID}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding FullAddress}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding CreatedAt}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding StatusDescription}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type ticket:DeliveryTicketVM}">
+                        <Border BorderBrush="Orange" BorderThickness="3" MouseDown="lstTickets_MouseDown">
+                            <StackPanel>
+                                <TextBlock Text="{Binding ClientFullName}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding FullAddress}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding CreatedAt}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding StatusDescription}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                    <DataTemplate DataType="{x:Type ticket:RideTicketVM}">
+                        <Border BorderBrush="Teal" BorderThickness="3" MouseDown="lstTickets_MouseDown">
+                            <StackPanel>
+                                <TextBlock Text="{Binding ClientFullName}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding FetchFullAddress}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding DestinationFullAddress}" TextWrapping="Wrap"/>
+                                <TextBlock Text="{Binding CreatedAt}"/>
+                                <TextBlock Text="{Binding StatusDescription}" TextWrapping="Wrap"/>
+                            </StackPanel>
+                        </Border>
+                    </DataTemplate>
+                </ListBox.Resources>
+            </ListBox>
+            <!--<Grid Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="170"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition></RowDefinition>
+                            <RowDefinition></RowDefinition>
+                        </Grid.RowDefinitions>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Grid Grid.Column="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+
+                        <Grid Grid.Column="0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="75"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid Grid.Row="1">
+                                <Grid.RowDefinitions>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                    <RowDefinition></RowDefinition>
+                                </Grid.RowDefinitions>
+                                <CheckBox x:Name="cbPackageDeliveries" FontSize="16" FontFamily="Helvetica" Grid.Row="0" Content="Package Deliveries" IsChecked="False" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="cbDonationPickups" FontSize="16" FontFamily="Helvetica" Grid.Row="1" Content="Donation Pickups" IsChecked="False" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                                <CheckBox x:Name="cbRideRequests" FontSize="16" FontFamily="Helvetica" Grid.Row="2" Content="Ride Requests" IsChecked="False" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+                            </Grid>
+                            <Label x:Name="lblSelectType" FontSize="16" FontFamily="Helvetica" Grid.Row="0" Content="Select Type" VerticalContentAlignment="Center" HorizontalContentAlignment="Center"></Label>
+
+                        </Grid>
+                        <Grid Grid.Column="1">
+                            <Grid.RowDefinitions>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                                <RowDefinition></RowDefinition>
+                            </Grid.RowDefinitions>
+                        </Grid>
+                    </Grid>
+
+                    <Grid Grid.Column="1">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="25"></RowDefinition>
+                            <RowDefinition Height="35"></RowDefinition>
+                            <RowDefinition Height="25"></RowDefinition>
+                            <RowDefinition Height="35"></RowDefinition>
+                            <RowDefinition Height="50"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Label x:Name="lblDriver" FontSize="16" FontFamily="Helvetica" Grid.Row="0" Content="Select a Driver" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="280"></Label>
+                        <TextBox x:Name="txtDriver" Grid.Row="1" VerticalAlignment="Center" HorizontalAlignment="Center" Width="270"></TextBox>
+
+
+                        <Label x:Name="lblVehicle" FontSize="16" FontFamily="Helvetica" Grid.Row="2" Content="Select a Vehicle" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Width="280"></Label>
+                        <TextBox x:Name="txtVehicle" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Center" Width="270"></TextBox>
+                        <Grid Grid.Row="5">
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition></ColumnDefinition>
+                                <ColumnDefinition></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+                            <Button x:Name="btnBack" Grid.Column="0" Content="Back" FontSize="16" FontFamily="Helvetica" FontWeight="Bold" Margin="10 10" Click="btnBack_Click"></Button>
+                            <Button x:Name="btnNext" Grid.Column="1" Content="Next" FontSize="16" FontFamily="Helvetica" FontWeight="Bold" Margin="10 10" Click="btnNext_Click"></Button>
+                        </Grid>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Grid.RowDefinitions>
+                        <RowDefinition Height="30"></RowDefinition>
+                        <RowDefinition></RowDefinition>
+                    </Grid.RowDefinitions>
+                    <Grid Grid.Row="0">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Label x:Name="lblUnassignedTickets" Content="Unassigned Tickets" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="0" FontSize="16" FontFamily="Helvetica"></Label>
+                        <Label x:Name="lblAssignedTickets" Content="Assigned Tickets" HorizontalAlignment="Center" VerticalAlignment="Center" Grid.Column="1" FontSize="16" FontFamily="Helvetica"></Label>
+                    </Grid>
+                    <Grid Grid.Row="1">
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition></ColumnDefinition>
+                            <ColumnDefinition></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <ListBox x:Name="lbUnassignedTickets" ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Column="0">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Element[Title].Value}" />
+                                        <TextBlock Text="{Binding Element[BusinessName].Value}" />
+                                        <TextBlock Text="{Binding Element[Location].Value}" />
+                                        <TextBlock Text="{Binding Element[TimeRange].Value}" />
+                                        <TextBlock Text="{Binding Element[ExtraInfo].Value}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                        <ListBox x:Name="lbAssignedTickets" ScrollViewer.VerticalScrollBarVisibility="Visible" Grid.Column="1">
+                            <ListBox.ItemsPanel>
+                                <ItemsPanelTemplate>
+                                    <WrapPanel/>
+                                </ItemsPanelTemplate>
+                            </ListBox.ItemsPanel>
+                            <ListBox.ItemTemplate>
+                                <DataTemplate>
+                                    <StackPanel>
+                                        <TextBlock Text="{Binding Element[Title].Value}" />
+                                        <TextBlock Text="{Binding Element[BusinessName].Value}" />
+                                        <TextBlock Text="{Binding Element[Location].Value}" />
+                                        <TextBlock Text="{Binding Element[TimeRange].Value}" />
+                                        <TextBlock Text="{Binding Element[ExtraInfo].Value}" />
+                                    </StackPanel>
+                                </DataTemplate>
+                            </ListBox.ItemTemplate>
+                        </ListBox>
+                    </Grid>
+                </Grid>
+            </Grid>
+            <Grid Grid.Column="1">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="300"></RowDefinition>
+                    <RowDefinition></RowDefinition>
+                </Grid.RowDefinitions>
+                <Grid Grid.Row="0">
+                    <Grid.ColumnDefinitions>
+                        <ColumnDefinition Width="130"></ColumnDefinition>
+                        <ColumnDefinition></ColumnDefinition>
+                    </Grid.ColumnDefinitions>
+                    <Viewbox Grid.Column="1" VerticalAlignment="Center" HorizontalAlignment="Center">
+                        <Calendar x:Name="cSelectedDate"></Calendar>
+                    </Viewbox>
+                    <Grid Grid.Column="0">
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="70"></RowDefinition>
+                            <RowDefinition Height="60"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Button x:Name="btnNewRoute" Grid.Row="0" FontSize="16" FontFamily="Helvetica" Content="New Route" Height="40" Width="110" Margin="10 10" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnNewRoute_Click"></Button>
+                        <Button x:Name="btnDeleteRoute" Grid.Row="1" FontSize="16" FontFamily="Helvetica" Content="Delete Route" Height="40" Width="110" Margin="10 10" HorizontalAlignment="Center" VerticalAlignment="Center" Click="btnDeleteRoute_Click"></Button>
+                    </Grid>
+                </Grid>
+                <Grid Grid.Row="1">
+                    <Label x:Name="lblTempMapText" Content="*INSERT MAP HERE*" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32"/>
+                </Grid>
+            </Grid>-->
+        </Grid>
+    </Grid>
+</Page>

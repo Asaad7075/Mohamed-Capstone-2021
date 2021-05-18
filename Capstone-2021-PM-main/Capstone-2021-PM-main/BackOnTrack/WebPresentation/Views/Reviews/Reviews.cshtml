@@ -1,0 +1,52 @@
+﻿@*Nate Hepker
+    Created: 2021/04/04
+    Reviews landing page for a user to select feedback 
+    to provide us.
+    *@
+@{
+    ViewBag.Title = "Reviews";
+}
+
+<h2>Tell us about your experience</h2>
+
+<div class="btn-group">
+    <div class="panel">
+        <h3 class="panel-heading">Write a review</h3>
+        <div class="panel">
+            <button type="button" class="btn btn-outline-primary btn-lg">
+                @Html.ActionLink("Review a ride you recieved", "ViewRecentRides", "RideReview")
+            </button>
+        </div>
+        <div class="panel">
+            <button type="button" class="btn btn-outline-primary btn-lg">
+                @Html.ActionLink("See all reviews", "ViewAllRideReviews", "RideReview")
+            </button>
+        </div>
+        <div class="panel">
+            <button type="button" class="btn btn-outline-primary btn-lg">
+                @Html.ActionLink("Review a product you recieved", "", "")
+            </button>
+        </div>
+    </div>
+    <div class="panel">
+        <h3 class="panel-heading">Write a Service review</h3>
+        <div class="panel">
+            <button type="button" class="btn btn-outline-primary btn-lg">
+                @Html.ActionLink("Review a service you recieved", "Available", "Services")
+            </button>
+        </div>
+        <div class="panel">
+            <button type="button" class="btn btn-outline-primary btn-lg">
+                @Html.ActionLink("See all reviews", "ServiceReviewList", "Services")
+            </button>
+        </div>
+        <div class="panel">
+            <button type="button" class="btn btn-out-primary btn-lg">
+                @Html.ActionLink("Edit a service review", "ServiceReviewList", "Services")
+            </button>
+        </div>
+
+
+    </div>
+
+

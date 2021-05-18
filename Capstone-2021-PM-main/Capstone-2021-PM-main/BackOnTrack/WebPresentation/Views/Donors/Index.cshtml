@@ -1,0 +1,190 @@
+﻿
+@{
+    ViewBag.Title = "Donors";
+}
+<!--
+  Asaad Mohamed
+  Created: 2021/04/13
+  This is Home page for a donor
+ -->
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="~/Content/bootstrap.css" rel="stylesheet" />
+    @*<link href="~/Content/Site.css" rel="stylesheet" />*@
+    <script src="~/Scripts/jquery-3.4.1.min.js"></script>
+    <script src="~/Scripts/jquery-3.4.1.slim.js"></script>
+    <script src="~/Scripts/bootstrap.min.js"></script>
+
+
+    @Styles.Render("~/Content/css")
+
+</head>
+<body id="body">
+    <div class="form table-responsive">
+
+        <div class="container">
+            @*<div class="">
+                    <h5>
+                        Donation Systems
+                        Compare product features and ratings to find the right Donation Management Software for your organization.
+                    </h5>
+                </div>*@
+            <h2>Thanks for checking out our Sites to Make Giving Easier!</h2>
+            <hr />
+
+            <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                <ol class="carousel-indicators">
+                    <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+                    <li data-target="#myCarousel" data-slide-to="1"></li>
+                    <li data-target="#myCarousel" data-slide-to="2"></li>
+                    <li data-target="#myCarousel" data-slide-to="3"></li>
+                </ol>
+                <div class="carousel-inner">
+                    <div class="item active">
+
+                        <img src="~/Images/NonProfit.jpeg" />
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Give Five, Save Lives</h1>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item">
+
+                        <img src="~/Images/Donated-Hair.jpg" />
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Why we're all needed</h1>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item ">
+                        <img src="~/Images/driver.jpg" />
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Donation & Transportation</h1>
+                            </div>
+
+                        </div>
+                    </div>
+                    <div class="item">
+
+                        <img src="~/Images/Supporting.jpg" />
+                        <div class="container">
+                            <div class="carousel-caption">
+                                <h1>Help others by donating to their fundraiser</h1>
+                            </div>
+
+                        </div>
+                    </div>
+                </div>
+                <a href="#myCarousel" class="left carousel-control" data-slide="prev">
+                    <span class="glyphicon glyphicon-chevron-left"></span>
+                    <span class="sr-only">Previous</span>
+                </a>
+                <a href="#myCarousel" class="right carousel-control" data-slide="next">
+                    <span class="glyphicon glyphicon-chevron-right"></span>
+                    <span class="sr-only">Next</span>
+                </a>
+
+            </div>
+
+
+            <script>
+                $("#carousel").carousel(
+                    {
+                        interval: 3000
+                    });
+            </script>
+
+            <!--This  div which contant the three images and button that
+                take you to create new donor information-->
+
+            <div class="row">
+                <div class="col-lg-6 col-md-0">
+                    <div>
+                        <h3>Have you found the best fundraising site for your needs?</h3>
+                        <p>
+                            Whether you’re fundraising for personal causes,
+                            or you’re a nonprofit looking to reach more supporters,
+                            GoFundMe and GoFundMe Charity allow you to bring your charity
+                            fundraising ideas to life. Take some time to discover charity
+                            fundraisers on GoFundMe for inspiration, then sign up to start
+                            a new fundraiser of your own.
+                        </p>
+                    </div>
+
+                </div>
+                <div class="col-md-4 col-md-2 text-center">
+                    <div>
+
+                        <btn id="btn">
+                            @Html.ActionLink("Start Now", "CreateDonation", "Donations")
+
+                        </btn>
+                    </div>
+                </div>
+            </div>
+            <br />
+
+            <!--This three paragraphs with images -->
+            <div class="row">
+                <div class="col-md-4">
+                    <div class="card-footer">
+                        <img src="~/Images/charitable.jpg" class="card-img-top" alt="Charities">
+
+                        <div class="card-body">
+                            <h3 class="card-title-images"> Provide new options</h3>
+                            <p class="card-text">
+                                Our giving system makes it possible to reach
+                                more people in more ways with simple donation solutions.
+                                Between online giving, a mobile giving app,
+                                card readers and text donations, everyone has the opportunity to give.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-footer">
+                        <img src="~/Images/packaging.jpg" class="card-img-top" alt="charitable">
+
+                        <div class="card-body">
+                            <h3 class="card-title-images">Collect donations</h3>
+                            <p class="card-text">
+                                Donors react quickly when
+                                the donation tools are difficult to use.
+                                A well-crafted donor experience can make
+                                a big difference in the success of any campaign.
+                                We’ve created donor screens that are simple, familiar,
+                                and fast for your users.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-md-4">
+                    <div class="card-footer">
+                        <img src="~/Images/growth-giving.png" class="card-img-top" alt="packaging">
+
+                        <div class="card-body">
+                            <h3 class="card-title-images">Make a donation</h3>
+                            <p class="card-text">
+                                With recurring giving you'll get a more
+                                even distribution of giving throughout the year.
+                                This helps to smooth out seasonal giving slumps,
+                                improving cash flow and allowing you to forecast
+                                more accurately.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        @Scripts.Render("~/bundles/jquery")
+        @Scripts.Render("~/bundles/bootstrap")
+        @Scripts.Render("~/bundles/Site")
+    </div>
+</body>

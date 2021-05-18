@@ -1,0 +1,39 @@
+﻿<Page x:Class="WpfPresentation.MaterialHandlingView.ViewDonationForms"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation.MaterialHandlingView"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="ViewDonationForms" Loaded="Page_Loaded">
+
+    <Grid x:Name="viewDonationForm"  Margin="5px" Background="GhostWhite" Visibility="Visible" IsEnabled="True">
+
+        <Border x:Name="borderHeaderViewDonorForm" Background="LightGray" Grid.Row="0" Grid.ColumnSpan="2"></Border>
+        <TextBlock x:Name="txtBlkHeaderViewDonorForm" Grid.Row="0" Grid.ColumnSpan="2" Margin="3px" FontWeight="Bold" FontSize="16">
+                            Material Handling: Inventory Auditor
+        </TextBlock>
+
+
+        <ScrollViewer Grid.Row="1" Grid.RowSpan="9" Grid.ColumnSpan="2">
+            <Border Background="WhiteSmoke" Margin="50 50 50 50 ">
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" />
+                </Border.Effect>
+            </Border>
+        </ScrollViewer>
+
+        <DataGrid  x:Name="dgDonationForm"  SelectionMode="Single" Visibility="Visible" Grid.ColumnSpan="4"
+                              IsReadOnly="True"  Margin=" 70 70 70 70" Grid.RowSpan="2" MouseDoubleClick="dgDonationForm_MouseDoubleClick" >
+
+        </DataGrid>
+        <Button x:Name="btnEditOption" Content="Edit" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Left" 
+                                Width="100" Margin="115 5 5 120 " FontFamily="Helvetica" FontSize="25" Padding="3" HorizontalContentAlignment="Center"  Click="btnEditOption_Click" />
+
+        <Button x:Name="btnCreateDonorForm" Content="Add" Grid.Column="1"  VerticalAlignment="Bottom" HorizontalAlignment="Right" 
+                                Width="100" Margin="15 5 650 120 " FontFamily="Helvetica" FontSize="25" Padding="3" HorizontalContentAlignment="Center"  Click="btnCreateDonorForm_Click" />
+
+
+    </Grid>
+</Page>

@@ -1,0 +1,29 @@
+﻿@model IEnumerable<DomainModels.Order>
+
+@{
+    ViewBag.Title = "ViewMyOrders";
+}
+
+<h2>View My Orders</h2>
+
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.DateRequested)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+<tr>
+    <td>
+        @Html.DisplayFor(modelItem => item.DateRequested)
+    </td>
+    <td>
+        @Html.ActionLink("Order Details", "ViewOrderDetails", new { dateRequested = item.DateRequested })
+    </td>
+</tr>
+    }
+
+</table>

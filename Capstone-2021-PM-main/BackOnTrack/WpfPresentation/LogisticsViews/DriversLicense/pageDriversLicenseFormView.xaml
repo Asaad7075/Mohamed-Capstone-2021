@@ -1,0 +1,195 @@
+﻿<Page x:Class="WpfPresentation.LogisticsViews.DriversLicense.pageDriversLicenseFormView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation"
+      xmlns:licValidator="clr-namespace:WpfPresentation.Validators"
+      xmlns:context="clr-namespace:WpfPresentation.LogisticsViews.DriversLicense"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000" MinWidth="900" Margin="5 0"
+      Title="DriversLicenseForm">
+    <!-- Chantal Shirley
+        Created: 2021/02/02
+        Add Drivers license page
+    ******************************
+        Chantal Shirley
+        Updated: 2021/03/09
+        Binding resources found via Microsoft API: https://docs.microsoft.com/en-us/dotnet/desktop/wpf/data/data-binding-overview?view=netdesktop-5.0
+    -->
+    <Page.Resources>
+        <!--<licValidator:LicenseIssuedValidator x:Key="DateIssued" />
+        <licValidator:LicenseNumberValidator x:Key="LicNo" />
+        <licValidator:EmployeeIDValidator x:Key="EmpID" />-->
+        <Style x:Key="textStyleTextBox" TargetType="TextBox">
+            <Setter Property="Foreground" Value="#333333" />
+            <Setter Property="MaxLength" Value="40" />
+            <Setter Property="Width" Value="392" />
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="ToolTip" 
+                    Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <Style x:Key="textStyleDatePicker" TargetType="DatePicker">
+            <Style.Triggers>
+                <Trigger Property="Validation.HasError" Value="true">
+                    <Setter Property="Background" Value="Red" />
+                    <Setter Property="ToolTip" 
+                    Value="{Binding RelativeSource={RelativeSource Self}, Path=(Validation.Errors)[0].ErrorContent}"/>
+                </Trigger>
+            </Style.Triggers>
+        </Style>
+        <ControlTemplate x:Key="validationTemplate">
+            <!-- Partial implementation inspired by: https://www.codeproject.com/Tips/690130/Simple-Validation-in-WPF-->
+            <DockPanel>
+                <StackPanel Orientation="Horizontal" DockPanel.Dock="Top">
+                    <Grid Width="12" Height="12">
+                        <Ellipse Width="12" Height="12" 
+            Fill="Red" HorizontalAlignment="Center" 
+            VerticalAlignment="Center"
+                     
+                     ></Ellipse>
+                        <TextBlock Foreground="White" FontWeight="Heavy" 
+            FontSize="8" HorizontalAlignment="Center" 
+            VerticalAlignment="Center" TextAlignment="Center"
+                       ToolTip="{Binding ElementName=ErrorAdorner, 
+                       Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
+                       >!</TextBlock>
+                    </Grid>
+                    <TextBlock Foreground="Red" FontWeight="Bold" Margin="2,0,0,0" 
+                   Text="{Binding ElementName=ErrorAdorner, 
+                   Path=AdornedElement.(Validation.Errors)[0].ErrorContent}"
+                   ></TextBlock>
+                </StackPanel>
+                <AdornedElementPlaceholder 
+        x:Name="ErrorAdorner" ></AdornedElementPlaceholder>
+                <!-- Partial implementation inspired by: https://www.syncfusion.com/blogs/post/form-validation-of-input-controls-in-wpf.aspx-->
+                <Path HorizontalAlignment="Right"
+                            VerticalAlignment="Top"
+                            Width="10" Height="10"
+                            Data="M0,0 L 1,0 1,1z"
+                            Margin="-10,0,0,0"
+                            Stretch="Fill"
+                            Fill="Red"/>
+            </DockPanel>
+        </ControlTemplate>
+
+        <!-- Partial implementation inspired by: https://www.syncfusion.com/blogs/post/form-validation-of-input-controls-in-wpf.aspx-->
+        <!--<Style x:Key="buttonStyleTrigger" TargetType="Button">
+            <Setter Property="IsEnabled" Value="False"/>
+            <Style.Triggers>
+                <DataTrigger Binding="{Binding ButtonError}" Value="{x:Null}">
+                    <Setter Property="IsEnabled" Value="True"/>
+                </DataTrigger>
+            </Style.Triggers>
+        </Style>-->
+    </Page.Resources>
+    <Grid x:Name="grdAddDriversLicenseInformation" Background="GhostWhite" Visibility="Visible" IsEnabled="True">
+
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition Width="375"></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition Height="65"></RowDefinition>
+            <RowDefinition Height="65"></RowDefinition>
+            <RowDefinition Height="65"></RowDefinition>
+            <RowDefinition Height="65"></RowDefinition>
+            <RowDefinition Height="65"></RowDefinition>
+            <RowDefinition Height="125" ></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border x:Name="borderHeaderAddDriversLicense" Background="LightGray" Grid.Row="0" Grid.ColumnSpan="2"></Border>
+        <TextBlock x:Name="txtBlkHeaderAddDriversLicense" Grid.Row="0" Grid.ColumnSpan="2" Margin="3px" FontWeight="Bold" FontSize="16">
+                        Logistics
+        </TextBlock>
+
+        <ScrollViewer Grid.Row="1" Grid.RowSpan="8" Grid.ColumnSpan="2" >
+            <Border Background="GhostWhite" Margin="15" >
+                <Border.Effect>
+                    <DropShadowEffect ShadowDepth="0" BlurRadius="10" />
+                </Border.Effect>
+            </Border>
+        </ScrollViewer>
+
+        <TextBlock x:Name="txtBlk" Grid.Row="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" FontFamily="Helvetica" Margin="0 25 0 0" >
+                        Add Drivers License Information
+        </TextBlock>
+
+        <TextBlock x:Name="txtBlkBodyAddDriversLicense" Grid.Row="2" Grid.ColumnSpan="2" Margin="0 0 300 0" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Helvetica"
+                                FontSize="25" FontWeight="Bold">
+                        Fill in all areas of the form:
+        </TextBlock>
+
+        <Label x:Name="lblDriversLicNo" Content="Driver's License Number" Grid.Column="0" Grid.Row="3" VerticalAlignment="Center" HorizontalAlignment="Right"
+                            FontSize="16" FontFamily="Helvetica"></Label>
+        <TextBox x:Name="txtDriversLicNo" Grid.Row="3" Grid.Column="1" Margin="10" Height="30" Width="400" 
+                 HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" 
+                 HorizontalAlignment="Left" FontSize="16" Validation.ErrorTemplate="{StaticResource validationTemplate}" >
+            <TextBox.Text>
+                <Binding x:Name="licNoBinding" Path="LicenseNumber" Mode="TwoWay" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <licValidator:LicenseNumberValidator x:Name="licNoError" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <Label x:Name="lblEmployeeID" Content="Employee ID" Grid.Column="0" Grid.Row="4" VerticalAlignment="Center" HorizontalAlignment="Right"
+                            FontSize="16" FontFamily="Helvetica"></Label>
+        <TextBox x:Name="txtEmployeeID" Grid.Row="4" Grid.Column="1" Margin="10" Height="30" Width="400" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                FontSize="16" Style="{StaticResource textStyleTextBox}" Validation.ErrorTemplate="{StaticResource validationTemplate}">
+            <TextBox.Text>
+                <Binding Path="EmployeeID" Mode="TwoWay" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <licValidator:EmployeeIDValidator x:Name="EmpIDError"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </TextBox.Text>
+        </TextBox>
+
+        <Label x:Name="lblLicenseType" Content="License Type" Grid.Column="0" Grid.Row="5" VerticalAlignment="Center" HorizontalAlignment="Right"
+                            FontSize="16" FontFamily="Helvetica"></Label>
+        <ComboBox x:Name="comboBoxLicenseType" Grid.Row="5" Grid.Column="1" Margin="10" HorizontalContentAlignment="Left" VerticalContentAlignment="Center" VerticalAlignment="Center" HorizontalAlignment="Left"
+                            ItemsSource="{Binding Path=LicenseType}" FontSize="16" SelectedIndex="0">
+            <ComboBox.SelectedItem>
+                <Binding Path="LicType"  Mode="TwoWay" UpdateSourceTrigger="LostFocus"/>
+            </ComboBox.SelectedItem>
+        </ComboBox>
+
+        <Label x:Name="lblLicenseIssued" Content="License Issued" Grid.Column="0" Grid.Row="6" VerticalAlignment="Center" HorizontalAlignment="Right"
+                            FontSize="16" FontFamily="Helvetica"></Label>
+        <DatePicker x:Name="datePickerLicenseIssued" Grid.Row="6" Grid.Column="1" Margin="10 10 450 10" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                FontSize="16" Style="{StaticResource textStyleDatePicker}">
+            <DatePicker.Text>
+                <Binding Path="LicenseIssued"  Mode="TwoWay" UpdateSourceTrigger="LostFocus">
+                    <Binding.ValidationRules>
+                        <licValidator:LicenseIssuedValidator x:Name="licIssuedError" />
+                    </Binding.ValidationRules>
+                </Binding>
+            </DatePicker.Text>
+        </DatePicker>
+
+        <Label x:Name="lblLicenseExpiry" Content="License Expiry Date" Grid.Column="0" Grid.Row="7" VerticalAlignment="Center" HorizontalAlignment="Right"
+                            FontSize="16" FontFamily="Helvetica"></Label>
+        <DatePicker x:Name="datePickerLicenseExpiry" Grid.Row="7" Grid.Column="1" Margin="10 10 450 10" VerticalAlignment="Center" HorizontalAlignment="Left"
+                                FontSize="16"  Style="{StaticResource textStyleDatePicker}">
+            <DatePicker.SelectedDate>
+                <Binding Path="LicenseExpiry" UpdateSourceTrigger="LostFocus" Mode="TwoWay">
+                    <Binding.ValidationRules>
+                        <licValidator:LicenseExpiryValidator x:Name="licExpiryError"/>
+                    </Binding.ValidationRules>
+                </Binding>
+            </DatePicker.SelectedDate>
+        </DatePicker>
+
+        <Button x:Name="btnAddDriversLicenseInformation" Content="Save" Grid.Column="1" Grid.Row="9" VerticalAlignment="Top" IsEnabled="False"
+                            Width="200" Margin="0 0 50 0" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnAddDriversLicenseInformation_Click"/>
+    </Grid>
+    <!-- End Of Add Drivers License Page-->
+</Page>

@@ -1,0 +1,62 @@
+﻿@model IEnumerable<DomainModels.Services.ServiceVM>
+
+@{
+    ViewBag.Title = "ServiceSchedules";
+}
+
+@using (Html.BeginForm())
+{
+    <div class="form-horizontal">
+        <h2>ServiceSchedules</h2>
+
+        <table class="table">
+            <tr>
+                <th>
+                    Business
+                </th>
+                <th>
+                    Service
+                </th>
+                <th>
+                    Start Date/Time
+                </th>
+                <th>
+                    End Date/Time
+                </th>
+                <th></th>
+            </tr>
+
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.BusinessName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceScheduleStart)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ServiceScheduleEnd)
+                    </td>
+                    <td>
+                        @Html.ActionLink("Save this appointment", "ServiceSchedules", new { serviceID = item.ServiceID, scheduleID = item.ScheduleID },
+                        new { onclick = "return confirm('Your appointment has been saved')" })<br />
+
+                        <div class="form-group">
+                            <input type="submit" value="Save appointment and schedule a ride" formmethod="post"
+                                   onclick="return confirm('You will be redirected to set up your ride')" />
+                        </div>
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+    </div>
+}
+<p>
+    @Html.ActionLink("Return To Services", "Available")
+</p>

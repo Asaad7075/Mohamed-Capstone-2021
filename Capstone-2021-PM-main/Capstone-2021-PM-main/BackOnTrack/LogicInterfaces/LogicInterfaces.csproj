@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="15.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
+  <PropertyGroup>
+    <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
+    <Platform Condition=" '$(Platform)' == '' ">AnyCPU</Platform>
+    <ProjectGuid>{E361B80B-F414-4D3F-BFEC-453DBADA2FB1}</ProjectGuid>
+    <OutputType>Library</OutputType>
+    <AppDesignerFolder>Properties</AppDesignerFolder>
+    <RootNamespace>LogicInterfaces</RootNamespace>
+    <AssemblyName>LogicInterfaces</AssemblyName>
+    <TargetFrameworkVersion>v4.7.2</TargetFrameworkVersion>
+    <FileAlignment>512</FileAlignment>
+    <Deterministic>true</Deterministic>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
+    <DebugSymbols>true</DebugSymbols>
+    <DebugType>full</DebugType>
+    <Optimize>false</Optimize>
+    <OutputPath>bin\Debug\</OutputPath>
+    <DefineConstants>DEBUG;TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Release|AnyCPU' ">
+    <DebugType>pdbonly</DebugType>
+    <Optimize>true</Optimize>
+    <OutputPath>bin\Release\</OutputPath>
+    <DefineConstants>TRACE</DefineConstants>
+    <ErrorReport>prompt</ErrorReport>
+    <WarningLevel>4</WarningLevel>
+  </PropertyGroup>
+  <ItemGroup>
+    <Reference Include="BingMapsRESTToolkit, Version=1.1.4.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\BingMapsRESTToolkit.1.1.4\lib\net45\BingMapsRESTToolkit.dll</HintPath>
+    </Reference>
+    <Reference Include="PresentationCore" />
+    <Reference Include="System" />
+    <Reference Include="System.Core" />
+    <Reference Include="System.Xml.Linq" />
+    <Reference Include="System.Data.DataSetExtensions" />
+    <Reference Include="Microsoft.CSharp" />
+    <Reference Include="System.Data" />
+    <Reference Include="System.Net.Http" />
+    <Reference Include="System.Xml" />
+  </ItemGroup>
+  <ItemGroup>
+    <Compile Include="IChildcareManager.cs" />
+    <Compile Include="IClientManager.cs" />
+    <Compile Include="IDeliveryTicketManager.cs" />
+    <Compile Include="IDonationFormManager.cs" />
+    <Compile Include="IDonationManager.cs" />
+    <Compile Include="IDonorManager.cs" />
+    <Compile Include="IDriversLicenseManager.cs" />
+    <Compile Include="IEmployeeManager.cs" />
+    <Compile Include="IFinancialCounselingManager.cs" />
+    <Compile Include="IGeoLocationManager.cs" />
+    <Compile Include="IInventoryManager.cs" />
+    <Compile Include="IOrderManager.cs" />
+    <Compile Include="IPickUpTicketManager.cs" />
+    <Compile Include="IRideTicketManager.cs" />
+    <Compile Include="IRideReviewManager.cs" />
+    <Compile Include="IRouteManager.cs" />
+    <Compile Include="IServiceCategoriesManager.cs" />
+    <Compile Include="IServiceManager.cs" />
+    <Compile Include="IServiceProviderManager.cs" />
+    <Compile Include="IServiceReviewManager.cs" />
+    <Compile Include="ISupplyInventoryManager.cs" />
+    <Compile Include="ITicketStatusManager.cs" />
+    <Compile Include="IUSGovernmentTransportationManager.cs" />
+    <Compile Include="IVehicleImageManager.cs" />
+    <Compile Include="IVehicleMaintenanceReportManager.cs" />
+    <Compile Include="IVehicleMaintenanceStatusManager.cs" />
+    <Compile Include="IVehicleManager.cs" />
+    <Compile Include="IZipCodeManager.cs" />
+    <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\DataAccessInterfaces\DataAccessInterfaces.csproj">
+      <Project>{270dcdb2-fc48-4ae6-9ec4-a1f2ec8f8141}</Project>
+      <Name>DataAccessInterfaces</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\DomainModels\DomainModels.csproj">
+      <Project>{12b501f8-4f38-4755-8eba-d810bd243705}</Project>
+      <Name>DomainModels</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
+  </ItemGroup>
+  <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
+</Project>

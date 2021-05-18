@@ -1,0 +1,156 @@
+﻿<Page x:Class="WpfPresentation.LogisticsViews.Vehicle.pageVehicleListView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation.LogisticsViews.Vehicle"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000" MinWidth="900" Margin="5 0"
+      Title="RemoveVehicle">
+    <!-- Chantal Shirley
+    Created: 2020/03/03
+    Vehicle Maintenance Status page-->
+    <Grid x:Name="grdRemoveVehicle" Margin="5px" Background="GhostWhite" Visibility="Visible" IsEnabled="True">
+        <Grid.ColumnDefinitions>
+            <ColumnDefinition></ColumnDefinition>
+            <ColumnDefinition></ColumnDefinition>
+        </Grid.ColumnDefinitions>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="30"></RowDefinition>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="75"></RowDefinition>
+            <RowDefinition></RowDefinition>
+            <RowDefinition Height="75"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Border x:Name="borderHeaderRemoveVehicle" Background="LightGray" Grid.Row="0" Grid.ColumnSpan="2"></Border>
+        <TextBlock x:Name="txtBlkHeaderRemoveVehicle" Grid.Row="0" Grid.ColumnSpan="2" Margin="3px" FontWeight="Bold" FontSize="16">
+                        Logistics: Maintenance
+        </TextBlock>
+
+        <Border Background="GhostWhite" Margin="15">
+            <Border.Effect>
+                <DropShadowEffect ShadowDepth="0" BlurRadius="10" />
+            </Border.Effect>
+        </Border>
+
+        <TextBlock Grid.Row="1" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" Margin="0 25 0 0">
+            <Run x:Name="runTitle" FontSize="40" FontWeight="Bold" FontFamily="Helvetica">Vehicle  Fleet</Run>
+        </TextBlock>
+        <TextBlock Grid.Row="2" Grid.Column="0" Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Left" Margin="150 0 0 0">
+            <Run x:Name="runDirections" FontSize="25" FontWeight="Bold" FontFamily="Helvetica">Remove or Modify Vehicles:</Run>
+        </TextBlock>
+
+        <ListView x:Name="lstViewVehicles" Grid.Row="3" Grid.ColumnSpan="2" Margin="50 0 50 0" 
+                  SelectionMode="Single" 
+                  ItemsSource="{Binding Vehicles}" >
+            <ListView.View>
+                <GridView x:Name="grdViewRemoveVehicles">
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Vehicle" MaxWidth="100" />
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <Image Source="{Binding VehicleImage}"  MaxWidth="100"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Vin Number" MaxWidth="200"/>
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding VinNumber}" TextWrapping="Wrap" Foreground="DarkBlue"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Text="License Plate Number" MaxWidth="200" />
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding LicensePlateNumber}" TextWrapping="Wrap" />
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Make" MaxWidth="150" />
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding VehicleMake}" TextWrapping="Wrap"  Foreground="DarkBlue"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Model" MaxWidth="250" />
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding VehicleModel}" TextWrapping="Wrap"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Year" MaxWidth="200" />
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding VehicleYear}"  TextWrapping="Wrap" MaxWidth="200" Foreground="DarkBlue"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn>
+                        <GridViewColumn.Header>
+                            <TextBlock Text="Mileage" MaxWidth="200" />
+                        </GridViewColumn.Header>
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Mileage}" TextWrapping="Wrap" MaxWidth="200" Foreground="DarkBlue"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+
+        <Button x:Name="btnModifyVehicle" Content="Modify Details" Grid.Column="0" Grid.Row="9" VerticalAlignment="Top"
+                            Width="200" Margin="0 10" FontFamily="Helvetica" FontSize="25" Padding="5" 
+                HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnModifyVehicle_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=HasItems, ElementName=lstViewVehicles}" Value="True">
+                            <Setter Property="IsEnabled"  Value="True" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+        
+        <Button x:Name="btnRefreshList" Content="Refresh List" Grid.Column="0" Grid.ColumnSpan="2" Grid.Row="9" VerticalAlignment="Top" 
+                Width="200" Margin="0 10" FontFamily="Helvetica" FontSize="25" Padding="5" 
+                HorizontalContentAlignment="Center" Click="btnRefreshList_Click"/>
+
+        <Button x:Name="btnRemoveVehicle" Content="Remove" Grid.Column="1" Grid.Row="9" VerticalAlignment="Top"
+                            Width="200" Margin="0 10" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnRemoveVehicle_Click">
+            <Button.Style>
+                <Style TargetType="Button">
+                    <Setter Property="IsEnabled" Value="False"/>
+                    <Style.Triggers>
+                        <DataTrigger Binding="{Binding Path=HasItems, ElementName=lstViewVehicles}" Value="True">
+                            <Setter Property="IsEnabled"  Value="True" />
+                        </DataTrigger>
+                    </Style.Triggers>
+                </Style>
+            </Button.Style>
+        </Button>
+    </Grid>
+</Page>

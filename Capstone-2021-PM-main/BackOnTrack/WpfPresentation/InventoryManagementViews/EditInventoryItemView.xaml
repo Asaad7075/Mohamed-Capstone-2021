@@ -1,0 +1,65 @@
+﻿<Page x:Class="WpfPresentation.InventoryManagementViews.EditInventoryItemView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation.InventoryManagementViews"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="EditInventoryItemView" Loaded="Page_Loaded">
+
+    <Grid>
+        <Grid x:Name="grdEditItemFromInventory" Margin="5px" Background="GhostWhite" Visibility="Visible" IsEnabled="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="541*"></ColumnDefinition>
+                <ColumnDefinition Width="449*"></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="430"></RowDefinition>
+                <RowDefinition Height="90" ></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="borderHeaderEditItem" Background="LightGray" Grid.Row="0" Grid.ColumnSpan="2"></Border>
+            <TextBlock x:Name="txtBlkHeaderEditItem" Grid.Row="0" Grid.ColumnSpan="2" Margin="3px" FontWeight="Bold" FontSize="16">
+                            Inventory Management: Inventory Specialist
+            </TextBlock>
+
+            <ScrollViewer Grid.Row="1" Grid.RowSpan="3" Grid.ColumnSpan="2">
+                <Border Background="WhiteSmoke" Margin="15">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" />
+                    </Border.Effect>
+                </Border>
+            </ScrollViewer>
+
+            <TextBlock x:Name="txtBlk" Grid.Row="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" FontFamily="Helvetica" Margin="313,38,313,14" Height="48" Width="364" >
+                            Edit Inventory Item
+            </TextBlock>
+            <TextBlock x:Name="txtBlkSelectItem" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="20" FontWeight="Bold" FontFamily="Helvetica" Margin="95,11,328,395" Grid.ColumnSpan="2" Height="24" Width="567" >
+                            Click item, enter new item information, the select 'Edit Item'
+            </TextBlock>
+
+            <DataGrid x:Name="dgViewItemsToEdit" SelectionMode="Single" Grid.Row="2" Margin="95,40,95,140" Grid.ColumnSpan="2" IsReadOnly="True"/>
+
+            <Label x:Name="lblNewItemName" Content="New Item Name:" Grid.Row="2" FontSize="16" FontFamily="Helvetica" Margin="171,323,181,76" Grid.Column="0"/>
+            <TextBox x:Name="txtNewItemName" Grid.Row="2" Grid.Column="0"
+                                 FontSize="16" BorderBrush="Black" Margin="383,315,0,69" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="lblNewItemQuantity" Content="New Item Quantity:" Grid.Row="2" Grid.Column="1" FontSize="16" FontFamily="Helvetica" Margin="32,323,268,78"/>
+            <TextBox x:Name="txtNewItemQuantity" Grid.Row="2" Grid.Column="1" FontSize="16" BorderBrush="Black" Margin="186,315,67,65" VerticalContentAlignment="Center"/>
+
+            <Label x:Name="lblNewItemDescription" Content="New Item Description:" Grid.Row="2" Margin="202,394,121,10" 
+                               FontSize="16" FontFamily="Helvetica" />
+            <TextBox x:Name="txtNewItemDescription" Grid.Row="2" VerticalContentAlignment="Center"
+                                 FontSize="16" BorderBrush="Black" Margin="383,370,67,10" Grid.ColumnSpan="2"/>
+
+            <Button x:Name="btnEditItemInformation" Content="Edit Item" Grid.Row="3" VerticalAlignment="Top" HorizontalAlignment="Left" Grid.Column="1" 
+                                Margin="91,15,0,0" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnEditItemInformation_Click" Width="149" Height="42"/>
+
+            <Button x:Name="btnCancelEditItemInformation" Content="Cancel" Grid.Row="3" VerticalAlignment="Top" Grid.Column="1" 
+                               Margin="271,15,67,0" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnCancelEditItemInformation_Click" Height="42"/>
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,72 @@
+﻿<Page x:Class="WpfPresentation.pageEditUserRolesView"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:WpfPresentation"
+      mc:Ignorable="d" 
+      d:DesignHeight="650" d:DesignWidth="1000"
+      Title="UserRoles">
+
+    <Grid>
+    <!-- Nate Hepker
+    Created: 2021/02/28
+    EditUserRolesView Page -->
+        <Grid x:Name="grdEditEmployeeRole" Margin="5px" Background="GhostWhite" Visibility="Visible" IsEnabled="True">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition></ColumnDefinition>
+                <ColumnDefinition></ColumnDefinition>
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="30"></RowDefinition>
+                <RowDefinition Height="100"></RowDefinition>
+                <RowDefinition Height="60"></RowDefinition>
+                <RowDefinition Height="50"></RowDefinition>
+                <RowDefinition Height="250"></RowDefinition>
+                <RowDefinition Height="40"></RowDefinition>
+                <RowDefinition Height="90"></RowDefinition>
+            </Grid.RowDefinitions>
+
+            <Border x:Name="borderEditEmployeeRole" Background="LightGray" Grid.Row="0" Grid.ColumnSpan="2"></Border>
+            <TextBlock x:Name="txtBlkHeaderEditEmployeeRole" Grid.Row="0" Grid.ColumnSpan="2" Margin="3px" FontWeight="Bold" FontSize="16">
+                            Update: Employee Role(s)
+            </TextBlock>
+
+            <ScrollViewer Grid.Row="1" Grid.RowSpan="9" Grid.ColumnSpan="2">
+                <Border Background="WhiteSmoke" Margin="15">
+                    <Border.Effect>
+                        <DropShadowEffect ShadowDepth="0" BlurRadius="10" />
+                    </Border.Effect>
+                </Border>
+            </ScrollViewer>
+
+            <TextBlock x:Name="txtBlkEditEmployeeRole" Grid.Row="1"  Grid.ColumnSpan="2" VerticalAlignment="Center" HorizontalAlignment="Center" FontSize="40" FontWeight="Bold" FontFamily="Helvetica" Margin="0 25 0 0" >
+                            Update: Employee Role(s)
+            </TextBlock>
+
+            <TextBlock x:Name="txtBlkBodyEditEmployeeRoleInstruction" Grid.Row="2" Grid.ColumnSpan="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Helvetica"
+                                   FontSize="25" FontWeight="DemiBold" Text=" Double click onthe roles you wish to assign or unassign" >
+            </TextBlock>
+
+            <Label x:Name="lblEditEmployeeRoleEmployee" Grid.Row="3" Grid.ColumnSpan="2" Margin="10" HorizontalAlignment="Center" VerticalAlignment="Center" FontFamily="Helvetica"
+                                   FontSize="18" FontWeight="DemiBold" Content="Employee being edited" />
+
+            <ListBox x:Name="lstAssignedEmployeeRole" IsEnabled="True" Grid.Row="4" Grid.Column="0" Margin="225 5 10 5 " MouseDoubleClick="lstAssignedEmployeeRole_MouseDoubleClick"/>
+
+            <ListBox x:Name="lstUnassignedEmployeeRole" IsEnabled="True" Grid.Row="4" Grid.Column="1" Margin="13 5 225 5 " MouseDoubleClick="lstUnassignedEmployeeRole_MouseDoubleClick"/>
+            
+            <Label VerticalAlignment="Top" Padding="0 0 13 0" Width="170" HorizontalContentAlignment="Center" HorizontalAlignment="Right" Grid.Row="5" FontSize="16">Assigned Roles</Label>
+
+            <Label VerticalAlignment="Top" Padding="13 0 0 0" Width="170" HorizontalContentAlignment="Center" HorizontalAlignment="Left" Grid.Row="5" Grid.Column="1" FontSize="16">Unassigned Roles</Label>
+
+            <Button x:Name="btnSaveEmployeeRole" Content="Save" Grid.Column="0" Grid.Row="6" VerticalAlignment="Top" HorizontalAlignment="Right" 
+                                Width="200" Margin="0 3 13 0" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnSaveEmployeeRole_Click"/>
+
+            <Button x:Name="btnCancelEmployeeRole" Content="Cancel" Grid.Column="1" Grid.Row="6" VerticalAlignment="Top" HorizontalAlignment="Left" 
+                                Width="200" Margin="13 3 0 0" FontFamily="Helvetica" FontSize="25" Padding="5" HorizontalContentAlignment="Center" VerticalContentAlignment="Center" Click="btnCancelEmployeeRole_Click"/>
+
+            <DataGrid x:Name="dgEditEmployeeRole" Width="650" Margin="0 10 0 10" Grid.ColumnSpan="2" Grid.Row="3" Grid.RowSpan="3" Visibility="Visible" IsReadOnly="True" SelectionMode="Single" MouseDoubleClick="dgEditEmployeeRole_MouseDoubleClick" />
+
+        </Grid>
+    </Grid>
+</Page>

@@ -1,0 +1,121 @@
+﻿@model DomainModels.Donation
+
+@{
+    ViewBag.Title = "DonationItemDetails";
+}
+
+<h2>
+    @Html.DisplayFor(model => model.NameOfItem)
+</h2>
+<div>
+    <h4>Donation</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.DonorID)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonorID)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.NameOfItem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.NameOfItem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Description)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Description)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EstValue)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EstValue)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.AgeofItem)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.AgeofItem)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DropOff)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DropOff)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickUp)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickUp)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.PickUpDateTime)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.PickUpDateTime)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.MailReceipt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.MailReceipt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.EmailReceipt)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.EmailReceipt)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.DonationStatus)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DonationStatus)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Back", "ViewDonations") |
+    @Html.ActionLink("Apply for item", "ApplyForDonationItem", new { id = Model.DonationID })
+</p>
+
+@if (ViewBag.Message != null)
+{
+    <script>
+
+    $(document).ready(function(){
+
+    alert('@ViewBag.Message');
+
+});
+
+    </script>
+
+}

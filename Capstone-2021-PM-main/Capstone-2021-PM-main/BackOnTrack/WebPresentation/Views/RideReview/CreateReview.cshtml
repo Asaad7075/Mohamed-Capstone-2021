@@ -1,0 +1,132 @@
+﻿@model DomainModels.RideReviewVM
+
+@{
+    ViewBag.Title = "CreateReview";
+}
+@*Nate Hepker
+    Created: 2021/04/06
+    Creates ride review for a ride that was provided. Is passed a ride
+    ticket and a user can review that ride.
+*@
+<h2>Create Review </h2>
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-horizontal">
+        <h4>RideReviewVM</h4>
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.TicketID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.TicketID)
+                @Html.ValidationMessageFor(model => model.TicketID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group hidden">
+            @Html.LabelFor(model => model.ClientID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ClientID)
+                @Html.ValidationMessageFor(model => model.ClientID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClientFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ClientFirstName)
+                @Html.ValidationMessageFor(model => model.ClientFirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClientLastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.ClientLastName)
+                @Html.ValidationMessageFor(model => model.ClientLastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClientDriverRating, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ClientDriverRating, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ClientDriverRating, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.ClientComment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.ClientComment, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.ClientComment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group hidden">
+            @Html.LabelFor(model => model.DriverID, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.DriverID)
+                @Html.ValidationMessageFor(model => model.DriverID, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group hidden">
+            @Html.LabelFor(model => model.DriverClientRating, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.DriverClientRating)
+                @Html.ValidationMessageFor(model => model.DriverClientRating, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group hidden">
+            @Html.LabelFor(model => model.DriverComment, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.DriverComment)
+                @Html.ValidationMessageFor(model => model.DriverComment, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group hidden">
+            @Html.LabelFor(model => model.EmployeeFirstName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.EmployeeFirstName)
+                @Html.ValidationMessageFor(model => model.EmployeeFirstName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.EmployeeLastName, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.EmployeeLastName)
+                @Html.ValidationMessageFor(model => model.EmployeeLastName, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group hidden">
+            @Html.LabelFor(model => model.TicketType, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DisplayFor(model => model.TicketType)
+                @Html.ValidationMessageFor(model => model.TicketType, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "ViewAllRideReviews")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

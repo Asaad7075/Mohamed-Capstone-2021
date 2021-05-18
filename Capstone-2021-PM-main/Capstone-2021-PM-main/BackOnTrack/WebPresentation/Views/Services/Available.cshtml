@@ -1,0 +1,85 @@
+﻿@*
+    Chase Martin
+    Created: 2021/04/20
+    View to view all available services as a list.
+*@
+
+@model IEnumerable<DomainModels.Services.Service>
+
+@{
+    ViewBag.Title = "ViewServices";
+}
+
+<h2>View Services</h2>
+
+<p>
+    @Html.ActionLink("My Service Appointments", "SavedSchedules")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceCategoryName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Available)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ScheduleRequired)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceDescription)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ServiceProviderFirstLast)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.BusinessName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceCategoryName)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Available)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ScheduleRequired)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceDescription)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.ServiceProviderFirstLast)
+            </td>
+            <td>
+                @Html.ActionLink("View Schedules", "ServiceSchedules", new { serviceId = item.ServiceID })
+            </td>
+        </tr>
+    }
+    <tr>
+        <td>
+            <button type="button" class="btn btn-outline-primary btn-md">
+                @Html.ActionLink("Review a Service", "ServiceReview")
+            </button>
+        </td>
+        <td>
+            <button type="button" class="btn btn-outline-primary btn-md">
+                @Html.ActionLink("See all service reviews", "ServiceReviewList", "Services")
+            </button>
+        </td>
+    </tr>
+</table>

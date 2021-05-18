@@ -1,0 +1,103 @@
+﻿@model IEnumerable<DomainModels.Donor>
+
+@{
+    ViewBag.Title = "ViewAllDonors";
+}
+
+<h2>All Donors</h2>
+
+<br />
+<table class="table table-bordered table-hover table-responsive success">
+    <tr id="viewDonors">
+        <th>
+            @Html.DisplayNameFor(model => model.Business)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Individual)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.BusinessName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FirstName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LastName)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.MiddleInitial)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Address)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ZipCode)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.SS)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EIN)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Active)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Business)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Individual)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.BusinessName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FirstName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LastName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.MiddleInitial)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Address)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ZipCode)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.SS)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EIN)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Active)
+        </td>*@
+        <td>
+
+            @Html.ActionLink("Details", "DonorDetails", new { id=item.DonorID }) 
+            @*@Html.ActionLink("Delete", "Delete", new { id=item.DonorID })*@
+        </td>
+    </tr>
+}
+
+</table>
